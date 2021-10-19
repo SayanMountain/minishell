@@ -8,7 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/Users/pjeffere/CLionProjects/minishell/libft/ft_strdup.c" "/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/libft/ft_strdup.c.o"
+  "/Users/pjeffere/CLionProjects/minishell/libft/ft_strjoin.c" "/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/libft/ft_strjoin.c.o"
+  "/Users/pjeffere/CLionProjects/minishell/libft/ft_strlen.c" "/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/libft/ft_strlen.c.o"
+  "/Users/pjeffere/CLionProjects/minishell/libft/ft_substr.c" "/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/libft/ft_substr.c.o"
   "/Users/pjeffere/CLionProjects/minishell/main.c" "/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/main.c.o"
+  "/Users/pjeffere/CLionProjects/minishell/parser.c" "/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/parser.c.o"
+  "/Users/pjeffere/CLionProjects/minishell/utils1.c" "/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/utils1.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

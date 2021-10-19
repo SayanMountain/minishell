@@ -78,7 +78,28 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strdup.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strjoin.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strlen.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_substr.c">
+			<Option target="minishell"/>
+		</Unit>
 		<Unit filename="/Users/pjeffere/CLionProjects/minishell/main.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/minishell.h">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/parser.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/utils1.c">
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/Users/pjeffere/CLionProjects/minishell/CMakeLists.txt">
