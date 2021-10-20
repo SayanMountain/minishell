@@ -18,17 +18,14 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-typedef	struct	s_env
-{
-	char		**envp;
-	int 		code;
-}				t_env;
-
-t_env			g_env;
-
 
 int ft_len_arr(char **arr);
+
+//parser
 void parser(char *argv);
 
+//menu
+void 	invitation(void);
+void	fill_hist(char *str);
 
 #endif

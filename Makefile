@@ -4,7 +4,10 @@ HEADER		= 	minishell.h
 LIBS		= -L ./libft -lft -lreadline
 
 LIST		=  	main.c 						\
-				utils1.c
+				utils1.c 					\
+				parser.c 					\
+				menu.c   					\
+				./GNL/get_next_line.c		\
 
 GCC			= gcc
 
@@ -17,7 +20,7 @@ FLAGS       = -Wall -Wextra -Werror
 
 $(NAME) :	$(OBJ) $(HEADER)
 			$(MAKE) -C ./libft
-			$(GCC) $(FLAGS) $(OBJ) Libft/libft.a -o $(NAME)
+			$(GCC) $(FLAGS) $(OBJ) $(LIBS) Libft/libft.a -o $(NAME)
 
 all :		$(NAME)
 
@@ -30,7 +33,7 @@ fclean:          clean
 			$(RM) $(NAME)
 
 debug:
-	gcc -g $(LIST) -o $(NAME)
+	gcc -g ./*.c ./GNL/*.c ./libft/*.c -o $(NAME)
 
 re :		fclean all
 
