@@ -22,24 +22,13 @@ static void ft_get_envp (char **env)
 	}
 	printf("%s", g_env->content);
 	tmp = g_env;
-	
+
 	while (tmp)
 	{
-		i = 0;
 		j = 0;
-		while (tmp->content[i] != '=')
-		{
-			tmp->key[i] = tmp->content[i];
-			i++;
-		}
-
+		fill_key(tmp);
 		i++;
-		while (tmp->content[i])
-		{
-			tmp->value[j] = tmp->content[i];
-			i++;
-			j++;
-		}
+		fill_value(tmp, i);
 		tmp = tmp->next;
 	}
 //	i = 0;

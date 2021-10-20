@@ -18,8 +18,10 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-
+//utils1
 int ft_len_arr(char **arr);
+void	fill_key(t_list *tmp);
+void	fill_value(t_list *tmp, int i);
 
 //parser
 void parser(char *argv);
