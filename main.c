@@ -69,10 +69,9 @@ int main (int argc, char **argv, char **env)
     (void)argc;
     (void)argv;
     ft_get_envp(&g_env, env);
-//    signal(SIGINT, ft_sig_handle);
+//    signal(SIGINT, aft_sig_handle);
 //    signal(SIGQUIT, ft_sig_handle);
 	invitation(&g_env);
-	while (argv[++i])
-		parser(argv[i]);
+	parser(argc, argv);
     return (0);
 }

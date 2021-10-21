@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-static void quotes_u(char *argv, int *i)
+static void quotes_u(char *argv)
 {
 	int g;
 	char *tmp1;
@@ -18,37 +18,46 @@ static void quotes_u(char *argv, int *i)
 	tmp1 = ft_strjoin(tmp1, tmp3);
 	printf("%s\n", tmp1);
 }
-
-static void quotes_d(char *argv, int *i)
+//парсер error
+// parser_error
+static void quotes_d(char *argv)
 {
 	int g;
-	char *tmp1;
-	char *tmp2;
-	char *tmp3;
 
-	g = *i;
-	while(argv[++(*i)])
-		if(argv[*i] == '\"')
+	g = -1;
+	while(argv[++g])
+		if(argv[g] == '\"')
 			break ;
-	tmp1 = ft_substr(argv, 0, g);
-	tmp2 = ft_substr(argv, g + 1, *i - g - 1);
-	tmp3 = ft_strdup(argv + *i + 1);
-	tmp1 = ft_strjoin(tmp1, tmp2);
-	tmp1 = ft_strjoin(tmp1, tmp3);
-	printf("%s\n", tmp1);
+		if(argv[g] == '\"')
+
+//		else
+//			parser_error();
 }
 
-void parser(char *argv)
+void parser(int argc, char **argv)
 {
 	int i;
+	int j;
+	int x;
 
-	i = 0;
+	i = 1;
+	j = 0;
+	x = 0;
+	com_str = malloc(sizeof(char*) * argc);
+
 	while(argv[i])
 	{
-		if(argv[i] == '\'')
-				quotes_u(argv, &i);
-		if(argv[i] == '\"')
-				quotes_d(argv, &i);
+		while(argv[i][j])
+		{
+			if(argv[i][j] == '\'')
+				quotes_u(argv[i]);
+			if(argv[i][j] == '\"')
+				quotes_d(argv[i]);
+			else
+				com_str[x][j] = argv[i][j];
+			j++;
+		}
+		x++;
 		i++;
 	}
 }
