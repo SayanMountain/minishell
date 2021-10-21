@@ -72,7 +72,7 @@ int main (int argc, char **argv, char **env)
 //    signal(SIGINT, ft_sig_handle);
 //    signal(SIGQUIT, ft_sig_handle);
 	invitation(&g_env);
-//	while (argv[++i])
-//		parser(argv[i]);
+	while (argv[++i])
+		parser(argv[i]);
     return (0);
 }
