@@ -2,38 +2,37 @@
 
 //строку из Переменной среды вложить в структуру
 
-static void ft_get_envp (char **env)
+static void ft_get_envp(t_list **g_env, char **env)
 {
 	int	i;
 	int j;
 	t_list	*tmp;
-	t_list	*g_env;
 
-	g_env  = NULL;
 	i = -1;
-//	g_env = (t_env){0};
-//	g_env.envp = malloc(sizeof(char *) * ft_len_arr(env) + 1);
-
 	while(env[++i])
 	{
 
 		tmp = ft_lstnew(env[i]);
-		ft_lstadd_back(&g_env, tmp);
+		ft_lstadd_back(g_env, tmp);
 	}
-	printf("%s", g_env->content);
-	tmp = g_env;
-
+	tmp = *g_env;
 	while (tmp)
 	{
 		j = 0;
-		fill_key(tmp);
-		i++;
-		fill_value(tmp, i);
+		fill_key(&tmp, &j);
+		j++;
+		fill_value(&tmp, j);
 		tmp = tmp->next;
 	}
+
 //	i = 0;
-//	while (g_env->content[i])
-//		printf("%s\t%s\t%s", g_env->content, g_env->key, g_env->value);
+//	tmp = g_env;
+//	while (tmp)
+//	{
+//		printf("%s\n%s\n%s\n\n", tmp->content, tmp->key, tmp->value);
+//		tmp = tmp->next;
+//		i++;
+//	}
 }
 
 //static void	ft_sig_handle(int signal)
@@ -63,14 +62,16 @@ static void ft_get_envp (char **env)
 int main (int argc, char **argv, char **env)
 {
 	int	i;
+	t_list	*g_env;
 
 	i = 0;
+	g_env  = NULL;
     (void)argc;
     (void)argv;
-    ft_get_envp(env);
+    ft_get_envp(&g_env, env);
 //    signal(SIGINT, ft_sig_handle);
 //    signal(SIGQUIT, ft_sig_handle);
-//	invitation();
+	invitation(&g_env);
 //	while (argv[++i])
 //		parser(argv[i]);
     return (0);

@@ -5,9 +5,9 @@ LIBS		= -L ./libft -lft -lreadline
 
 LIST		=  	main.c 						\
 				utils1.c 					\
-				parser.c 					\
 				menu.c   					\
 				./GNL/get_next_line.c		\
+				parser.c 					\
 
 GCC			= gcc
 

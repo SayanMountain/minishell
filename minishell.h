@@ -20,14 +20,15 @@
 
 //utils1
 int ft_len_arr(char **arr);
-void	fill_key(t_list *tmp);
-void	fill_value(t_list *tmp, int i);
+void	fill_key(t_list **tmp, int *j);
+void	fill_value(t_list **tmp, int i);
 
 //parser
 void parser(char *argv);
 
 //menu
-void 	invitation(void);
+void 	invitation(t_list **g_env);
 void	fill_hist(char *str);
+void	record_hist(t_list **g_env, char *str);
 
 #endif
