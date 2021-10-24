@@ -20,18 +20,23 @@ static void quotes_u(char *argv)
 }
 //парсер error
 // parser_error
-static void quotes_d(char *argv)
+
+
+static int quotes_d(const char *str, int j)
 {
-	int g;
+	int k;
 
-	g = -1;
-	while(argv[++g])
-		if(argv[g] == '\"')
+	k = 0;
+	while(str[++j])
+	{
+		if(str[j] == '\"')
 			break ;
-		if(argv[g] == '\"')
-
+		k++; /// отладить
+	}
+	return k;
 //		else
 //			parser_error();
+
 }
 
 void parser(int argc, char **argv)
@@ -39,10 +44,12 @@ void parser(int argc, char **argv)
 	int i;
 	int j;
 	int x;
+	int v;
 
 	i = 1;
 	j = 0;
 	x = 0;
+	v = 0;
 	com_str = malloc(sizeof(char*) * argc);
 
 	while(argv[i])
@@ -50,13 +57,20 @@ void parser(int argc, char **argv)
 		while(argv[i][j])
 		{
 			if(argv[i][j] == '\'')
-				quotes_u(argv[i]);
+			{
+				quotes_u(argv[i], j);
+				break;
+			}
 			if(argv[i][j] == '\"')
-				quotes_d(argv[i]);
+			{
+				quotes_d(argv[i], j);
+				break;
+			}
 			else
 				com_str[x][j] = argv[i][j];
 			j++;
 		}
+//		while (argv[i][j] != '\'')
 		x++;
 		i++;
 	}
