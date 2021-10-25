@@ -12,39 +12,39 @@
 //	return (i);
 //}
 
-void	fill_key(t_list **g_env, int *j)
+void	fill_key(t_list *g_env, int *j)
 {
 	int	i;
 	t_list	*tmp;
 
 	i = 0;
-	tmp = *g_env;
-	while (tmp->content[i] != '=')
+	tmp = g_env;
+	while (((t_env *)tmp->content)->line_env[i] != '=')
 		i++;
-	tmp->key = malloc(sizeof (char *) * (i + 1));
-	while (tmp->content[*j] != '=')
+	((t_env *)tmp->content)->key = malloc(sizeof (char *) * (i + 1));
+	while (((t_env *)tmp->content)->line_env[*j] != '=')
 	{
-		tmp->key[*j] = tmp->content[*j];
+		((t_env *)tmp->content)->key[*j] = ((t_env *)tmp->content)->line_env[*j];
 		(*j)++;
 	}
-	tmp->key[*j] = '\0';
+	((t_env *)tmp->content)->key[*j] = '\0';
 }
 
-void	fill_value(t_list **g_env, int i)
+void	fill_value(t_list *g_env, int *i)
 {
 	int	j;
 	size_t k;
 	t_list	*tmp;
 
 	j = 0;
-	tmp = *g_env;
-	k = ft_strlen(tmp->content) - (size_t)i;
-	tmp->value = malloc(sizeof (char *) * (k + 1));
-	while (tmp->content[i])
+	tmp = g_env;
+	k = ft_strlen(((t_env *)tmp->content)->line_env) - *i;
+	((t_env *)tmp->content)->value = malloc(sizeof (char *) * (k + 1));
+	while (((t_env *)tmp->content)->line_env[*i])
 	{
-		tmp->value[j] = tmp->content[i];
-		i++;
+		((t_env *)tmp->content)->value[j] = ((t_env *)tmp->content)->line_env[*i];
+		(*i)++;
 		j++;
 	}
-	tmp->value[j] = '\0';
+	((t_env *)tmp->content)->value[j] = '\0';
 }

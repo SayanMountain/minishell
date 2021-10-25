@@ -5,7 +5,7 @@
 		<Option title="minishell"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\libft\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/pjeffere/CLionProjects/minishell/cmake-build-debug"/>
@@ -77,20 +77,186 @@
 					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="libft">
+				<Option output="/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/liblibft.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/Makefile&quot;  VERBOSE=1 libft"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libft/fast">
+				<Option output="/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/liblibft.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/Makefile&quot;  VERBOSE=1 libft/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
-		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strdup.c">
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/GNL/get_next_line.c">
 			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/GNL/get_next_line.h">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_atoi.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_bzero.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_calloc.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_isalnum.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_isalpha.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_isascii.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_isdigit.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_isprint.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_itoa.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_lstadd_back.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_lstadd_front.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_lstclear.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_lstdelone.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_lstiter.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_lstlast.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_lstmap.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_lstnew.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_lstsize.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_memccpy.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_memchr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_memcmp.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_memcpy.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_memmove.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_memset.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_putchar_fd.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_putendl_fd.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_putnbr_fd.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_putstr_fd.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_split.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strchr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strdup.c">
+			<Option target="libft"/>
 		</Unit>
 		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strjoin.c">
-			<Option target="minishell"/>
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strlcat.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strlcpy.c">
+			<Option target="libft"/>
 		</Unit>
 		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strlen.c">
-			<Option target="minishell"/>
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strmapi.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strncmp.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strnstr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strrchr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_strtrim.c">
+			<Option target="libft"/>
 		</Unit>
 		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_substr.c">
-			<Option target="minishell"/>
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_tolower.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/ft_toupper.c">
+			<Option target="libft"/>
 		</Unit>
 		<Unit filename="/Users/pjeffere/CLionProjects/minishell/main.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/menu.c">
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/Users/pjeffere/CLionProjects/minishell/minishell.h">
@@ -104,6 +270,9 @@
 		</Unit>
 		<Unit filename="/Users/pjeffere/CLionProjects/minishell/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/pjeffere/CLionProjects/minishell/libft/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libft\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

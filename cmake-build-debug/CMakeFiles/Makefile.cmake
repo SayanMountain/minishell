@@ -30,6 +30,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../CMakeLists.txt"
   "CMakeFiles/3.20.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.20.2/CMakeSystem.cmake"
+  "../libft/CMakeLists.txt"
   )
 
 # The corresponding makefile is:
@@ -41,9 +42,11 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "libft/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/minishell.dir/DependInfo.cmake"
+  "libft/CMakeFiles/libft.dir/DependInfo.cmake"
   )

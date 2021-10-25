@@ -1,3 +1,6 @@
 /Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles/minishell.dir
+/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/CMakeFiles/rebuild_cache.dir
+/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/CMakeFiles/edit_cache.dir
+/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/libft/CMakeFiles/libft.dir

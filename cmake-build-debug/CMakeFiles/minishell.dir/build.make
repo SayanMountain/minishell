@@ -105,67 +105,39 @@ CMakeFiles/minishell.dir/parser.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/parser.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pjeffere/CLionProjects/minishell/parser.c -o CMakeFiles/minishell.dir/parser.c.s
 
-CMakeFiles/minishell.dir/libft/ft_strdup.c.o: CMakeFiles/minishell.dir/flags.make
-CMakeFiles/minishell.dir/libft/ft_strdup.c.o: ../libft/ft_strdup.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/minishell.dir/libft/ft_strdup.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/libft/ft_strdup.c.o -c /Users/pjeffere/CLionProjects/minishell/libft/ft_strdup.c
+CMakeFiles/minishell.dir/menu.c.o: CMakeFiles/minishell.dir/flags.make
+CMakeFiles/minishell.dir/menu.c.o: ../menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/minishell.dir/menu.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/menu.c.o -c /Users/pjeffere/CLionProjects/minishell/menu.c
 
-CMakeFiles/minishell.dir/libft/ft_strdup.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell.dir/libft/ft_strdup.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pjeffere/CLionProjects/minishell/libft/ft_strdup.c > CMakeFiles/minishell.dir/libft/ft_strdup.c.i
+CMakeFiles/minishell.dir/menu.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell.dir/menu.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pjeffere/CLionProjects/minishell/menu.c > CMakeFiles/minishell.dir/menu.c.i
 
-CMakeFiles/minishell.dir/libft/ft_strdup.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/libft/ft_strdup.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pjeffere/CLionProjects/minishell/libft/ft_strdup.c -o CMakeFiles/minishell.dir/libft/ft_strdup.c.s
+CMakeFiles/minishell.dir/menu.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/menu.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pjeffere/CLionProjects/minishell/menu.c -o CMakeFiles/minishell.dir/menu.c.s
 
-CMakeFiles/minishell.dir/libft/ft_substr.c.o: CMakeFiles/minishell.dir/flags.make
-CMakeFiles/minishell.dir/libft/ft_substr.c.o: ../libft/ft_substr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/minishell.dir/libft/ft_substr.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/libft/ft_substr.c.o -c /Users/pjeffere/CLionProjects/minishell/libft/ft_substr.c
+CMakeFiles/minishell.dir/GNL/get_next_line.c.o: CMakeFiles/minishell.dir/flags.make
+CMakeFiles/minishell.dir/GNL/get_next_line.c.o: ../GNL/get_next_line.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/minishell.dir/GNL/get_next_line.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/GNL/get_next_line.c.o -c /Users/pjeffere/CLionProjects/minishell/GNL/get_next_line.c
 
-CMakeFiles/minishell.dir/libft/ft_substr.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell.dir/libft/ft_substr.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pjeffere/CLionProjects/minishell/libft/ft_substr.c > CMakeFiles/minishell.dir/libft/ft_substr.c.i
+CMakeFiles/minishell.dir/GNL/get_next_line.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell.dir/GNL/get_next_line.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pjeffere/CLionProjects/minishell/GNL/get_next_line.c > CMakeFiles/minishell.dir/GNL/get_next_line.c.i
 
-CMakeFiles/minishell.dir/libft/ft_substr.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/libft/ft_substr.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pjeffere/CLionProjects/minishell/libft/ft_substr.c -o CMakeFiles/minishell.dir/libft/ft_substr.c.s
-
-CMakeFiles/minishell.dir/libft/ft_strjoin.c.o: CMakeFiles/minishell.dir/flags.make
-CMakeFiles/minishell.dir/libft/ft_strjoin.c.o: ../libft/ft_strjoin.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/minishell.dir/libft/ft_strjoin.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/libft/ft_strjoin.c.o -c /Users/pjeffere/CLionProjects/minishell/libft/ft_strjoin.c
-
-CMakeFiles/minishell.dir/libft/ft_strjoin.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell.dir/libft/ft_strjoin.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pjeffere/CLionProjects/minishell/libft/ft_strjoin.c > CMakeFiles/minishell.dir/libft/ft_strjoin.c.i
-
-CMakeFiles/minishell.dir/libft/ft_strjoin.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/libft/ft_strjoin.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pjeffere/CLionProjects/minishell/libft/ft_strjoin.c -o CMakeFiles/minishell.dir/libft/ft_strjoin.c.s
-
-CMakeFiles/minishell.dir/libft/ft_strlen.c.o: CMakeFiles/minishell.dir/flags.make
-CMakeFiles/minishell.dir/libft/ft_strlen.c.o: ../libft/ft_strlen.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/minishell.dir/libft/ft_strlen.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/libft/ft_strlen.c.o -c /Users/pjeffere/CLionProjects/minishell/libft/ft_strlen.c
-
-CMakeFiles/minishell.dir/libft/ft_strlen.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell.dir/libft/ft_strlen.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pjeffere/CLionProjects/minishell/libft/ft_strlen.c > CMakeFiles/minishell.dir/libft/ft_strlen.c.i
-
-CMakeFiles/minishell.dir/libft/ft_strlen.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/libft/ft_strlen.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pjeffere/CLionProjects/minishell/libft/ft_strlen.c -o CMakeFiles/minishell.dir/libft/ft_strlen.c.s
+CMakeFiles/minishell.dir/GNL/get_next_line.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/GNL/get_next_line.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pjeffere/CLionProjects/minishell/GNL/get_next_line.c -o CMakeFiles/minishell.dir/GNL/get_next_line.c.s
 
 # Object files for target minishell
 minishell_OBJECTS = \
 "CMakeFiles/minishell.dir/main.c.o" \
 "CMakeFiles/minishell.dir/utils1.c.o" \
 "CMakeFiles/minishell.dir/parser.c.o" \
-"CMakeFiles/minishell.dir/libft/ft_strdup.c.o" \
-"CMakeFiles/minishell.dir/libft/ft_substr.c.o" \
-"CMakeFiles/minishell.dir/libft/ft_strjoin.c.o" \
-"CMakeFiles/minishell.dir/libft/ft_strlen.c.o"
+"CMakeFiles/minishell.dir/menu.c.o" \
+"CMakeFiles/minishell.dir/GNL/get_next_line.c.o"
 
 # External object files for target minishell
 minishell_EXTERNAL_OBJECTS =
@@ -173,13 +145,12 @@ minishell_EXTERNAL_OBJECTS =
 minishell: CMakeFiles/minishell.dir/main.c.o
 minishell: CMakeFiles/minishell.dir/utils1.c.o
 minishell: CMakeFiles/minishell.dir/parser.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strdup.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_substr.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strjoin.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strlen.c.o
+minishell: CMakeFiles/minishell.dir/menu.c.o
+minishell: CMakeFiles/minishell.dir/GNL/get_next_line.c.o
 minishell: CMakeFiles/minishell.dir/build.make
+minishell: libft/liblibft.a
 minishell: CMakeFiles/minishell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable minishell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pjeffere/CLionProjects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable minishell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/minishell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

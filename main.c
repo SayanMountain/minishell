@@ -2,34 +2,43 @@
 
 //строку из Переменной среды вложить в структуру
 
-static void ft_get_envp(t_list **g_env, char **env)
+static void ft_get_envp(t_msh *msh, char **env)
 {
 	int	i;
 	int j;
 	t_list	*tmp;
+	t_env 	*new;
 
 	i = -1;
 	while(env[++i])
 	{
-
-		tmp = ft_lstnew(env[i]);
-		ft_lstadd_back(g_env, tmp);
+		new = ft_calloc(1, sizeof(t_env));
+		new->line_env = env[i];
+//		((t_env *)tmp->content)->line_env = env[i];
+		tmp = ft_lstnew(new);
+		ft_lstadd_back((msh->g_env->content), tmp);
 	}
-	tmp = *g_env;
+	tmp = (t_list *)msh->g_env;
 	while (tmp)
 	{
 		j = 0;
-		fill_key(&tmp, &j);
+		fill_key(tmp, &j);
 		j++;
-		fill_value(&tmp, j);
-		tmp = tmp->next;
+		fill_value(tmp, &j);
+		tmp = (t_list *) tmp->next;
 	}
+
+//	tmp = (*msh).g_env;
+//	((t_env *)tmp->content)->code = 10;
+//	t_list *lst;
+//
+//	((t_cmd *)lst->line_env)->a;
 
 //	i = 0;
 //	tmp = g_env;
 //	while (tmp)
 //	{
-//		printf("%s\n%s\n%s\n\n", tmp->content, tmp->key, tmp->value);
+//		printf("%s\n%s\n%s\n\n", tmp->line_env, tmp->key, tmp->value);
 //		tmp = tmp->next;
 //		i++;
 //	}
@@ -62,16 +71,18 @@ static void ft_get_envp(t_list **g_env, char **env)
 int main (int argc, char **argv, char **env)
 {
 	int	i;
-	t_list	*g_env;
+	t_msh msh;
 
 	i = 0;
-	g_env  = NULL;
+//	msh->g_env = NULL;
     (void)argc;
     (void)argv;
-    ft_get_envp(&g_env, env);
+//    com_str = malloc(sizeof(char*) * argc);
+    ft_get_envp(&msh, env);
 //    signal(SIGINT, aft_sig_handle);
 //    signal(SIGQUIT, ft_sig_handle);
-	invitation(&g_env);
-	parser(argc, argv);
+	invitation(&msh);
+	parser(&msh);
+//	printf("%s\n", msh.string_name);
     return (0);
 }

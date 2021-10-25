@@ -16,7 +16,7 @@ void	fill_hist(char *str)
 	close(fd);
 }
 
-char	*env_search(t_list **g_env, char *str)
+char	*env_search(t_list *g_env, char *str)
 {
 	int	i;
 	int k;
@@ -25,19 +25,19 @@ char	*env_search(t_list **g_env, char *str)
 
 	i = 0;
 	k = 0;
-	tmp = *g_env;
-	while (ft_memcmp(tmp->key, str, ft_strlen(str)) != 0)
+	tmp = g_env;
+	while (ft_memcmp(((t_env *)tmp->content)->key, str, ft_strlen(str)) != 0)
 		tmp = tmp->next;
-	way = malloc(sizeof (char ) * (ft_strlen(tmp->value) + 1));
-	while (tmp->value[i])
-		way[k++] = tmp->value[i++];
+	way = malloc(sizeof (char ) * (ft_strlen(((t_env *)tmp->content)->value) + 1));
+	while (((t_env *)tmp->content)->value[i])
+		way[k++] = ((t_env *)tmp->content)->value[i++];
 	way[k] = '\0';
 	way = ft_strjoin(way, "/.minishell_history");
 //	printf("%s\n", way);
 	return (way);
 }
 
-void	record_hist(t_list **g_env, char *str)
+void	record_hist(t_list *g_env, char *str)
 {
 	int	fd;
 	char	*way;
@@ -51,20 +51,19 @@ void	record_hist(t_list **g_env, char *str)
 	close(fd);
 }
 
-void invitation(t_list **g_env)
+void invitation(t_msh *msh)
 {
 	char	*way_hist;
 	char	*string_invite;
-	char	*string_name;
 
 //	printf("%s\n", (*g_env)->value);
-	way_hist = env_search(g_env, "HOME");
+	way_hist = env_search(msh->g_env, "HOME");
 	fill_hist(way_hist);
 	while(1)
 	{
 		string_invite = ft_strdup("minishell> ");
-		string_name = readline(string_invite);
-		if (string_name[0])
-			record_hist(g_env, string_name);
+		msh->string_name = readline(string_invite);
+		record_hist(msh->g_env, msh->string_name);
 	}
+
 }

@@ -14,21 +14,43 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-char **com_str;
+//char **com_str;
+
+typedef struct 			s_cmd
+{
+	int a;
+} 						t_cmd;
 
 
+typedef struct 			s_env
+{
+	char 				*line_env;
+	char 				*key;
+	char				*value;
+	int 				code;
+	int					visible;
+}						t_env;
+
+
+typedef struct 			s_msh
+{
+	t_list				*g_env;
+	t_list				*g_cmd;
+	char				*string_name;
+	char				*res;
+}						t_msh;
 
 //utils1
 int ft_len_arr(char **arr);
-void	fill_key(t_list **tmp, int *j);
-void	fill_value(t_list **tmp, int i);
+void	fill_key(t_list *g_env, int *j);
+void	fill_value(t_list *g_env, int *i);
 
 //parser
-void parser(int argc, char **argv);
+void parser(t_msh *msh);
 
 //menu
-void 	invitation(t_list **g_env);
+void 	invitation(t_msh *msh);
 void	fill_hist(char *str);
-void	record_hist(t_list **g_env, char *str);
+void	record_hist(t_list *g_env, char *str);
 
 #endif

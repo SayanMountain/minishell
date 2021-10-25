@@ -129,101 +129,42 @@ minishell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/build
 .PHONY : minishell/fast
 
-libft/ft_strdup.o: libft/ft_strdup.c.o
-.PHONY : libft/ft_strdup.o
+#=============================================================================
+# Target rules for targets named libft
+
+# Build rule for target.
+libft: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libft
+.PHONY : libft
+
+# fast build rule for target.
+libft/fast:
+	$(MAKE) $(MAKESILENT) -f libft/CMakeFiles/libft.dir/build.make libft/CMakeFiles/libft.dir/build
+.PHONY : libft/fast
+
+GNL/get_next_line.o: GNL/get_next_line.c.o
+.PHONY : GNL/get_next_line.o
 
 # target to build an object file
-libft/ft_strdup.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_strdup.c.o
-.PHONY : libft/ft_strdup.c.o
+GNL/get_next_line.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/GNL/get_next_line.c.o
+.PHONY : GNL/get_next_line.c.o
 
-libft/ft_strdup.i: libft/ft_strdup.c.i
-.PHONY : libft/ft_strdup.i
-
-# target to preprocess a source file
-libft/ft_strdup.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_strdup.c.i
-.PHONY : libft/ft_strdup.c.i
-
-libft/ft_strdup.s: libft/ft_strdup.c.s
-.PHONY : libft/ft_strdup.s
-
-# target to generate assembly for a file
-libft/ft_strdup.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_strdup.c.s
-.PHONY : libft/ft_strdup.c.s
-
-libft/ft_strjoin.o: libft/ft_strjoin.c.o
-.PHONY : libft/ft_strjoin.o
-
-# target to build an object file
-libft/ft_strjoin.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_strjoin.c.o
-.PHONY : libft/ft_strjoin.c.o
-
-libft/ft_strjoin.i: libft/ft_strjoin.c.i
-.PHONY : libft/ft_strjoin.i
+GNL/get_next_line.i: GNL/get_next_line.c.i
+.PHONY : GNL/get_next_line.i
 
 # target to preprocess a source file
-libft/ft_strjoin.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_strjoin.c.i
-.PHONY : libft/ft_strjoin.c.i
+GNL/get_next_line.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/GNL/get_next_line.c.i
+.PHONY : GNL/get_next_line.c.i
 
-libft/ft_strjoin.s: libft/ft_strjoin.c.s
-.PHONY : libft/ft_strjoin.s
-
-# target to generate assembly for a file
-libft/ft_strjoin.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_strjoin.c.s
-.PHONY : libft/ft_strjoin.c.s
-
-libft/ft_strlen.o: libft/ft_strlen.c.o
-.PHONY : libft/ft_strlen.o
-
-# target to build an object file
-libft/ft_strlen.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_strlen.c.o
-.PHONY : libft/ft_strlen.c.o
-
-libft/ft_strlen.i: libft/ft_strlen.c.i
-.PHONY : libft/ft_strlen.i
-
-# target to preprocess a source file
-libft/ft_strlen.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_strlen.c.i
-.PHONY : libft/ft_strlen.c.i
-
-libft/ft_strlen.s: libft/ft_strlen.c.s
-.PHONY : libft/ft_strlen.s
+GNL/get_next_line.s: GNL/get_next_line.c.s
+.PHONY : GNL/get_next_line.s
 
 # target to generate assembly for a file
-libft/ft_strlen.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_strlen.c.s
-.PHONY : libft/ft_strlen.c.s
-
-libft/ft_substr.o: libft/ft_substr.c.o
-.PHONY : libft/ft_substr.o
-
-# target to build an object file
-libft/ft_substr.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_substr.c.o
-.PHONY : libft/ft_substr.c.o
-
-libft/ft_substr.i: libft/ft_substr.c.i
-.PHONY : libft/ft_substr.i
-
-# target to preprocess a source file
-libft/ft_substr.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_substr.c.i
-.PHONY : libft/ft_substr.c.i
-
-libft/ft_substr.s: libft/ft_substr.c.s
-.PHONY : libft/ft_substr.s
-
-# target to generate assembly for a file
-libft/ft_substr.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_substr.c.s
-.PHONY : libft/ft_substr.c.s
+GNL/get_next_line.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/GNL/get_next_line.c.s
+.PHONY : GNL/get_next_line.c.s
 
 main.o: main.c.o
 .PHONY : main.o
@@ -248,6 +189,30 @@ main.s: main.c.s
 main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/main.c.s
 .PHONY : main.c.s
+
+menu.o: menu.c.o
+.PHONY : menu.o
+
+# target to build an object file
+menu.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/menu.c.o
+.PHONY : menu.c.o
+
+menu.i: menu.c.i
+.PHONY : menu.i
+
+# target to preprocess a source file
+menu.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/menu.c.i
+.PHONY : menu.c.i
+
+menu.s: menu.c.s
+.PHONY : menu.s
+
+# target to generate assembly for a file
+menu.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/menu.c.s
+.PHONY : menu.c.s
 
 parser.o: parser.c.o
 .PHONY : parser.o
@@ -305,22 +270,17 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... libft"
 	@echo "... minishell"
-	@echo "... libft/ft_strdup.o"
-	@echo "... libft/ft_strdup.i"
-	@echo "... libft/ft_strdup.s"
-	@echo "... libft/ft_strjoin.o"
-	@echo "... libft/ft_strjoin.i"
-	@echo "... libft/ft_strjoin.s"
-	@echo "... libft/ft_strlen.o"
-	@echo "... libft/ft_strlen.i"
-	@echo "... libft/ft_strlen.s"
-	@echo "... libft/ft_substr.o"
-	@echo "... libft/ft_substr.i"
-	@echo "... libft/ft_substr.s"
+	@echo "... GNL/get_next_line.o"
+	@echo "... GNL/get_next_line.i"
+	@echo "... GNL/get_next_line.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... menu.o"
+	@echo "... menu.i"
+	@echo "... menu.s"
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"
