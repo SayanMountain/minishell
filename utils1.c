@@ -12,25 +12,27 @@
 //	return (i);
 //}
 
-void	fill_key(t_list *g_env, int *j)
+void	fill_key(t_list *g_env, const char *str, int *j)
 {
 	int	i;
 	t_list	*tmp;
 
 	i = 0;
-	tmp = g_env;
-	while (((t_env *)tmp->content)->line_env[i] != '=')
+	tmp = (t_list *)g_env->content;
+	while (str[i] != '=')
 		i++;
-	((t_env *)tmp->content)->key = malloc(sizeof (char *) * (i + 1));
-	while (((t_env *)tmp->content)->line_env[*j] != '=')
+	(((t_env *)tmp->content)->key) = malloc(sizeof (char *) * (i + 1));
+//	printf("%s\n", ((t_env *)tmp->content)->key);
+	while (str[*j] != '=')
 	{
-		((t_env *)tmp->content)->key[*j] = ((t_env *)tmp->content)->line_env[*j];
+		(((t_env *)tmp->content)->key)[*j] = str[*j];
 		(*j)++;
 	}
-	((t_env *)tmp->content)->key[*j] = '\0';
+	(((t_env *)tmp->content)->key)[*j] = '\0';
+//	printf("%s\n", ((t_env *)tmp->content)->value);
 }
 
-void	fill_value(t_list *g_env, int *i)
+void	fill_value(t_list *g_env, char *str, int *i)
 {
 	int	j;
 	size_t k;
@@ -38,11 +40,11 @@ void	fill_value(t_list *g_env, int *i)
 
 	j = 0;
 	tmp = g_env;
-	k = ft_strlen(((t_env *)tmp->content)->line_env) - *i;
+	k = ft_strlen(str) - *i;
 	((t_env *)tmp->content)->value = malloc(sizeof (char *) * (k + 1));
-	while (((t_env *)tmp->content)->line_env[*i])
+	while (str[*i])
 	{
-		((t_env *)tmp->content)->value[j] = ((t_env *)tmp->content)->line_env[*i];
+		((t_env *)tmp->content)->value[j] = str[*i];
 		(*i)++;
 		j++;
 	}

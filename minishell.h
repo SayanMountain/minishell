@@ -27,7 +27,7 @@ typedef struct 			s_env
 	char 				*line_env;
 	char 				*key;
 	char				*value;
-	int 				code;
+	int					code;
 	int					visible;
 }						t_env;
 
@@ -42,8 +42,8 @@ typedef struct 			s_msh
 
 //utils1
 int ft_len_arr(char **arr);
-void	fill_key(t_list *g_env, int *j);
-void	fill_value(t_list *g_env, int *i);
+void	fill_key(t_list *g_env, const char *str, int *j);
+void	fill_value(t_list *g_env, char *str, int *i);
 
 //parser
 void parser(t_msh *msh);
