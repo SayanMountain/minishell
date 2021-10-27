@@ -3,14 +3,14 @@ project(minishell C)
 
 set(CMAKE_C_STANDARD 99)
 
+include_directories(. libft)
+
+add_subdirectory(libft)
 add_executable (minishell
         main.c
         minishell.h
         utils1.c
         parser.c
         menu.c
-        libft/ft_strdup.c
-        libft/ft_substr.c
-        libft/ft_strjoin.c
-        libft/ft_putchar.c
-        libft/ft_strlen.c)
+        GNL/get_next_line.c)
+target_link_libraries(minishell libft readline)
