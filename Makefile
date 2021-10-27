@@ -33,7 +33,7 @@ fclean:          clean
 			$(RM) $(NAME)
 
 debug:
-	gcc -g ./*.c ./GNL/*.c ./libft/*.c -o $(NAME)
+	gcc -g ./*.c ./GNL/*.c ./libft/*.c -o $(NAME) -lreadline
 
 re :		fclean all
 
