@@ -9,29 +9,59 @@ static void ft_get_envp(t_msh *msh, char **env)
 	t_list *tmp;
 	t_env  *new;
 
-	i = -1;
-	while(env[++i])
+	i = 0;
+	msh->g_env = NULL;
+	while(env[i])
 	{
-		new = ft_calloc(0, sizeof(t_env));
-		new->line_env = env[i];
+		new = ft_calloc(1, sizeof(t_env));
+//		fill_line_env(env[i], new);
+		//printf("env[%d] %s len=%zu \n", i, env[i], ft_strlen(env[i]));
+		new->line_env = ft_strdup(env[i]);
+		j = fill_key(new, new->line_env);
+		char *str= ft_strdup(new->line_env + ++j);
+		new->value = str;
 		tmp = ft_lstnew(new);
 		ft_lstadd_back(&(msh->g_env), tmp);
-		printf("%s\n", ((t_env *)tmp->content)->line_env);
+//		printf("%s\n", ((t_env *)tmp->content)->line_env);
+		i++;
 	}
-	tmp = (t_list *)msh->g_env;
+//	printf("end\n");
+//	tmp = msh->g_env;
 //	while (tmp)
 //	{
 //		printf("%s\n", ((t_env *)tmp->content)->line_env);
 //		tmp = tmp->next;
 //	}
 //	exit(0);
+//	printf("START\n");
+//char *str_tmp;
+//	while (tmp)
+//	{
+////		printf(" %s\n", ((t_env *)tmp->content)->line_env);
+//
+//		j = 0;
+//		fill_key(tmp, ((t_env *) tmp->content)->line_env);
+//		j++;
+//		str_tmp = ft_strdup(((t_env *)tmp->content)->line_env);
+////		printf("STAR1T\n");
+////		fill_value(tmp, ((t_env *)tmp->content)->line_env, &j);
+//		char *str= ft_strdup(((t_env *)tmp->content)->line_env + j);
+//		((t_env *)tmp->content)->value = str;
+//		((t_env *)tmp->content)->line_env = str_tmp;
+//
+////		printf("STAR2T\n");
+//		tmp = tmp->next;
+//	}
+//	printf("END\n");
+//	exit(0);
+	i = 0;
+//	new = msh->g_env->content;
+	tmp = msh->g_env;
 	while (tmp)
 	{
-		j = 0;
-		fill_key(tmp, ((t_env *)tmp->content)->line_env, &j);
-		j++;
-		fill_value(tmp, ((t_env *)tmp->content)->line_env, &j);
-		tmp = (t_list *)tmp->next;
+		new = tmp->content;
+		printf("%s\n%s\n%s\n\n", new->line_env, new->key, new->value);
+		tmp = tmp->next;
 	}
 }
 
@@ -41,14 +71,6 @@ static void ft_get_envp(t_msh *msh, char **env)
 //
 //	((t_cmd *)lst->line_env)->a;
 
-//	i = 0;
-//	tmp = g_env;
-//	while (tmp)
-//	{
-//		printf("%s\n%s\n%s\n\n", tmp->line_env, tmp->key, tmp->value);
-//		tmp = tmp->next;
-//		i++;
-//	}
 // }
 
 //static void	ft_sig_handle(int signal)
@@ -88,6 +110,7 @@ int main (int argc, char **argv, char **env)
     ft_get_envp(&msh, env);
 //    signal(SIGINT, aft_sig_handle);
 //    signal(SIGQUIT, ft_sig_handle);
+	exit(0);
 	invitation(&msh);
 	parser(&msh);
 //	printf("%s\n", msh.string_name);

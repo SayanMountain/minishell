@@ -65,5 +65,4 @@ void invitation(t_msh *msh)
 		msh->string_name = readline(string_invite);
 		record_hist(msh->g_env, msh->string_name);
 	}
-
 }

@@ -42,8 +42,10 @@ typedef struct 			s_msh
 
 //utils1
 int ft_len_arr(char **arr);
-void	fill_key(t_list *g_env, const char *str, int *j);
+int fill_key(t_env *g_env, const char *str);
 void	fill_value(t_list *g_env, char *str, int *i);
+void	fill_line_env(char *env, t_env *new);
+
 
 //parser
 void parser(t_msh *msh);
