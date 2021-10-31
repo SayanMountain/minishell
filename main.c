@@ -1,7 +1,5 @@
 #include "minishell.h"
 
-//строку из Переменной среды вложить в структуру
-
 static void ft_get_envp(t_msh *msh, char **env)
 {
 	int i;
@@ -27,7 +25,6 @@ int main (int argc, char **argv, char **env)
 //    signal(SIGINT, aft_sig_handle);
 //    signal(SIGQUIT, ft_sig_handle);
 //	exit(0);
-//	parser(&msh);
 //	printf("%s\n", msh.string_name);
     return (0);
 }

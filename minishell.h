@@ -19,17 +19,8 @@
 typedef struct 			s_cmd
 {
 	char	**cmd;
+	int 	fd[2];
 } 						t_cmd;
-
-
-//typedef struct 			s_env
-//{
-//	char 				*line_env;
-//	char 				*key;
-//	char				*value;
-//	int					code;
-//	int					visible;
-//}						t_env;
 
 
 typedef struct 			s_msh
@@ -37,17 +28,20 @@ typedef struct 			s_msh
 	char				**g_env;
 	t_list				*g_cmd;
 	char				*string_name;
-	char				*res;
+	int 				pipe;
+	char				*qwerty;
 }						t_msh;
 
 //menu
 void 	invitation(t_msh *msh);
 
 //utils1
-
+int	check_char(char c, char *str);
+void	list_cmd(t_msh *msh);
+void	hand_quotes(t_msh *msh, int *i);
 
 //parser
-//void parser(t_msh *msh);
+void parser(t_msh *msh);
 
 
 #endif
