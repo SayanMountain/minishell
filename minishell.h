@@ -14,10 +14,9 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-//char **com_str;
-
 typedef struct 			s_cmd
 {
+	char	*str;
 	char	**cmd;
 	int 	fd[2];
 } 						t_cmd;
@@ -29,6 +28,7 @@ typedef struct 			s_msh
 	t_list				*g_cmd;
 	char				*string_name;
 	int 				pipe;
+	int 				start;
 	char				*qwerty;
 }						t_msh;
 

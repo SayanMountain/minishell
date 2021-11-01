@@ -18,39 +18,53 @@ int	check_char(char c, char *str)
 
 void	hand_quotes(t_msh *msh, int *i)
 {
-	int	j;
-	char	*tmp1;
-	char	*tmp2;
-	char	*tmp3;
+//	int	j;
+//	char	*tmp2;
+//	char	*tmp3;
 
-	j = *i;
-	while (msh->string_name[++(*i)])
-		if (check_char(msh->string_name[*i], "'\""))
-			break;
-	tmp1 = ft_substr(msh->string_name, 0, j);
-	tmp2 = ft_substr(msh->string_name, j + 1, *i - j - 1);
-	tmp3 = ft_strdup(msh->string_name + (*i) + 1);
-	tmp1 = ft_strjoin(tmp1, tmp2);
-	tmp1 = ft_strjoin(tmp1, tmp3);
-	msh->qwerty = tmp1;
+	if (check_char(msh->string_name[*i], "\""))
+		while (msh->string_name[++(*i)] != '"')
+			;
+	if (check_char(msh->string_name[*i], "'"))
+		while (msh->string_name[++(*i)] != '\'')
+			;
+//	tmp2 = ft_substr(msh->string_name, j + 1, *i - j - 1);
+//	tmp3 = ft_strdup(msh->string_name + (*i) + 1);
+//	tmp1 = ft_strjoin(tmp1, tmp2);
+//	tmp1 = ft_strjoin(tmp1, tmp3);
+//	msh->qwerty = tmp1;
 }
 
 void	list_cmd(t_msh *msh)
 {
 	int i;
+	char	*tmp;
+	t_list	*new;
+	t_cmd	*cmd;
 
 	i = -1;
-	while (msh->string_name[++i])
+	msh->start = 0;
+	cmd = NULL;
+	while (msh->string_name[i])
 	{
-		if (check_char(msh->string_name[i], "|'\"\n"))
+		while (check_char(msh->string_name[++i], "|\0"))
 		{
 			if (check_char(msh->string_name[i], "'\""))
 				hand_quotes(msh, &i);
 //			else if (check_char(msh->string_name[i], "|\n"))
 //				create_list(msh);
 		}
+		tmp = ft_substr(msh->string_name, msh->start, i - msh->start);
+		new = ft_lstnew(cmd);
+		((t_cmd *)new->content)->str = tmp;
+		ft_lstadd_back(&msh->g_cmd, new);
+		msh->start = i + 1;
 	}
-	printf("%s\n", msh->qwerty);
+	tmp = ft_substr(msh->string_name, msh->start, i - msh->start);
+	new = ft_lstnew(cmd);
+	((t_cmd *)new->content)->str = tmp;
+	ft_lstadd_back(&msh->g_cmd, new);
+//	printf("%s\n", msh->qwerty);
 }
 
 
