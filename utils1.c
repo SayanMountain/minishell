@@ -42,17 +42,18 @@ void	list_cmd(t_msh *msh)
 	t_list	*new;
 	t_cmd	*cmd;
 
-	i = -1;
+	i = 0;
 	msh->start = 0;
 	cmd = NULL;
 	while (msh->string_name[i])
 	{
-		while (check_char(msh->string_name[++i], "|\0"))
+		while (check_char(msh->string_name[i], "|\0"))
 		{
 			if (check_char(msh->string_name[i], "'\""))
 				hand_quotes(msh, &i);
 //			else if (check_char(msh->string_name[i], "|\n"))
 //				create_list(msh);
+			i++;
 		}
 		tmp = ft_substr(msh->string_name, msh->start, i - msh->start);
 		new = ft_lstnew(cmd);

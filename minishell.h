@@ -21,6 +21,11 @@ typedef struct 			s_cmd
 	int 	fd[2];
 } 						t_cmd;
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 typedef struct 			s_msh
 {
@@ -42,6 +47,12 @@ void	hand_quotes(t_msh *msh, int *i);
 
 //parser
 void parser(t_msh *msh);
+
+//lst_functions
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(void *content);
+int	ft_lstsize(t_list *lst);
 
 
 #endif
