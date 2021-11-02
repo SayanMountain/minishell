@@ -8,6 +8,7 @@ LIST		=  	main.c 						\
 				menu.c   					\
 				./GNL/get_next_line.c		\
 				parser.c 					\
+				lst_functions.c
 
 GCC			= gcc
 

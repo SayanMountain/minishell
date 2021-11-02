@@ -6,12 +6,7 @@ LIST		= ft_strncmp.c ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii
 				ft_memmove.c ft_memccpy.c ft_memcpy.c ft_bzero.c ft_memset.c ft_strrchr.c ft_calloc.c \
                 ft_strnstr.c ft_strjoin.c ft_substr.c ft_strtrim.c ft_itoa.c ft_split.c
 
-LIST_B		= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-                ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
-
 OBJ			= $(LIST:.c=.o)
-
-OBJ_B		= $(LIST_B:.c=.o)
 
 FLAGS       = -Wall -Wextra -Werror
 
@@ -21,17 +16,14 @@ FLAGS       = -Wall -Wextra -Werror
 $(NAME) :	$(OBJ) $(HEADER)
 			ar rc $(NAME) $(OBJ)
 
-bonus :		$(OBJ_B) $(HEADER)
-			ar rc $(NAME) $(OBJ_B)
-
 all :		$(NAME)
 
 clean :
-			rm -f $(OBJ) $(OBJ_B)
+			rm -f $(OBJ)
 
 fclean :	clean
 			rm -f $(NAME)
 
 re :		fclean all
 
-.PHONY :	all clean fclean re bonus
+.PHONY :	all clean fclean re
