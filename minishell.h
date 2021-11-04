@@ -42,10 +42,14 @@ typedef struct 			s_msh
 //menu
 void 	invitation(t_msh *msh);
 
-//utils1
+//pars_func_0
 int	check_char(char c, char *str);
 void	list_cmd(t_msh *msh);
-void	hand_quotes(t_msh *msh, int *i);
+void	hand_quotes(const char *str, int *i);
+
+//pars_func_1
+void	split_str_cmd(t_msh *msh);
+void	write_arr(t_msh *msh, t_list *tmp, int len_arr, int i);
 
 //parser
 void parser(t_msh *msh);
@@ -56,5 +60,6 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(char *content);
 int	ft_lstsize(t_list *lst);
 
+void	print_list(t_list *g_cmd);
 
 #endif

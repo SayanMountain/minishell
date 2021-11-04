@@ -1,16 +1,10 @@
-	#include "minishell.h"
-
-
+#include "minishell.h"
 
 void parser(t_msh *msh)
 {
-//	int i;
-//
-//	i = -1;
+
 	list_cmd(msh);
-//	while(msh->string_name[++i])
-//	{
-//
-//	}
+	split_str_cmd(msh);
+	print_list(msh->g_cmd);
 }
 
