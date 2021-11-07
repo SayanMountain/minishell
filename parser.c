@@ -1,22 +1,16 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bmohamme <bmohamme@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 15:01:23 by bmohamme          #+#    #+#             */
-/*   Updated: 2021/11/05 15:01:23 by bmohamme         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+	#include "minishell.h"
 
-#include "minishell.h"
+
 
 void parser(t_msh *msh)
 {
+	int i;
 
+	i = -1;
 	list_cmd(msh);
-	split_str_cmd(msh);
-	print_list(msh->g_cmd);
+	while(msh->string_name[++i])
+	{
+
+	}
 }
 
