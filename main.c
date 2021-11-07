@@ -1,6 +1,22 @@
 #include "minishell.h"
 
-//строку из Переменной среды вложить в структуру
+void	print_list(t_list *g_cmd)
+{
+	int i;
+	t_list	*tmp;
+
+	tmp = g_cmd;
+	while (tmp)
+	{
+		i = 0;
+		while (tmp->cmd[i])
+		{
+			printf("|%s|\n", tmp->cmd[i]);
+			i++;
+		}
+		tmp = tmp->next;
+	}
+}
 
 static void ft_get_envp(t_msh *msh, char **env)
 {
@@ -27,7 +43,6 @@ int main (int argc, char **argv, char **env)
 //    signal(SIGINT, aft_sig_handle);
 //    signal(SIGQUIT, ft_sig_handle);
 //	exit(0);
-//	parser(&msh);
 //	printf("%s\n", msh.string_name);
     return (0);
 }
