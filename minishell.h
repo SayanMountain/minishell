@@ -23,7 +23,7 @@
 
 typedef struct s_list
 {
-	char	*content;
+	char	*str;
 	char	**cmd;
 	int 	fd[2];
 	struct s_list	*next;
@@ -34,9 +34,12 @@ typedef struct 			s_msh
 	char				**g_env;
 	t_list				*g_cmd;
 	char				*string_name;
-	int 				pipe;
+//	int 				pipe;
+//	int					c;
+	int					len_arr;
 	int 				start;
-	char				*qwerty;
+	int					finish;
+//	char				*qwerty;
 }						t_msh;
 
 //menu
@@ -45,11 +48,13 @@ void 	invitation(t_msh *msh);
 //pars_func_0
 int	check_char(char c, char *str);
 void	list_cmd(t_msh *msh);
-void	hand_quotes(const char *str, int *i);
+//void	hand_quotes(const char *str, t_msh *msh);
+void	 skip_quotes(const char *str, int *i);
 
 //pars_func_1
 void	split_str_cmd(t_msh *msh);
-void	write_arr(t_msh *msh, t_list *tmp, int len_arr, int i);
+void	write_arr(t_msh *msh, t_list *tmp, int i);
+void	check_space(t_msh *msh, t_list *tmp, int *i);
 
 //parser
 void parser(t_msh *msh);

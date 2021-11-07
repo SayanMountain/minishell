@@ -11,7 +11,7 @@ void	print_list(t_list *g_cmd)
 		i = 0;
 		while (tmp->cmd[i])
 		{
-			printf("%s\n", tmp->cmd[i]);
+			printf("|%s|\n", tmp->cmd[i]);
 			i++;
 		}
 		tmp = tmp->next;
