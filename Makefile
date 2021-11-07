@@ -4,13 +4,22 @@ HEADER		= 	minishell.h
 LIBS		= -L ./libft -lft -lreadline
 
 LIST		=  	main.c 						\
-				pars_func_0.c 				\
-				pars_func_1.c				\
 				menu.c   					\
 				./GNL/get_next_line.c		\
+				pars_func_0.c 				\
+				pars_func_1.c				\
 				parser.c 					\
 				lst_functions.c				\
-
+				all_com.c					\
+				cd.c						\
+				pwd.c						\
+				echo.c						\
+				export.c					\
+				exit.c						\
+				redirect.c					\
+				pipes.c						\
+				unset.c						\
+				env.c						\
 
 GCC			= gcc
 

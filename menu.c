@@ -10,5 +10,6 @@ void invitation(t_msh *msh)
 		msh->string_name = readline("minishell> ");
 		add_history(msh->string_name);
 		parser(msh);
+		all_command(msh);
 	}
 }

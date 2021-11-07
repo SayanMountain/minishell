@@ -4,18 +4,28 @@
 
 void	all_command(t_msh *msh)
 {
-	if(!ft_strncmp(msh->string_name, "cd", ft_strlen("cd")))
+	int i;
+
+	i = 0;
+	while(msh->g_cmd->cmd[i])
+	{
+	if(!ft_strncmp(msh->g_cmd->cmd[i], "cd", ft_strlen("cd")))
 		cd(msh);
-	if(!ft_strncmp(msh->string_name, "export", ft_strlen("export")))
+//	if(msh->g_cmd->cmd[i] == "cd")
+//		cd(msh);
+	if(!ft_strncmp(msh->g_cmd->cmd[i], "export", ft_strlen("export")))
 		export(msh);
-	if(!ft_strncmp(msh->string_name, "pwd", ft_strlen("pwd")))
-		pwd();
-	if(!ft_strncmp(msh->string_name, "echo", ft_strlen("echo")))
-		run_echo(msh);
-	if(!ft_strncmp(msh->string_name, "exit", ft_strlen("exit")))
-		cmd_exit(msh);
-	if(!ft_strncmp(msh->string_name, "env", ft_strlen("env")))
-		run_env(msh);
+
+//	if(!ft_strncmp(msh->string_name, "pwd", ft_strlen("pwd")))
+//		pwd();
+//	if(!ft_strncmp(msh->string_name, "echo", ft_strlen("echo")))
+//		run_echo(msh);
+//	if(!ft_strncmp(msh->string_name, "exit", ft_strlen("exit")))
+//		cmd_exit(msh);
+//	if(!ft_strncmp(msh->string_name, "env", ft_strlen("env")))
+//		run_env(msh);
+		i++;
+	}
 //	if(!ft_strncmp(msh->string_name, "unset", ft_strlen("unset")))
 //		unset(msh);
 //	else
