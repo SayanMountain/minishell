@@ -1,5 +1,12 @@
 #include "minishell.h"
 
+void	rewriting_str(t_list *tmp, char *str, int j)
+{
+	free(tmp->cmd[j]);
+	tmp->cmd[j] = NULL;
+	tmp->cmd[j] = str;
+}
+
 int	check_char(char c, char *str)
 {
 	while (*str)

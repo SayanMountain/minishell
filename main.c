@@ -9,11 +9,13 @@ void	print_list(t_list *g_cmd)
 	while (tmp)
 	{
 		i = 0;
+		printf("Начало массива ->\n");
 		while (tmp->cmd[i])
 		{
 			printf("|%s|\n", tmp->cmd[i]);
 			i++;
 		}
+		printf("Конец массива <-\n");
 		tmp = tmp->next;
 	}
 }
@@ -25,7 +27,7 @@ static void ft_get_envp(t_msh *msh, char **env)
 	i = 0;
 	while (env[i])
 		i++;
-	msh->g_env = malloc(sizeof(char *) * i + 1);
+	msh->g_env = malloc(sizeof(char *) * (i + 1));
 	i = -1;
 	while (env[++i])
 		msh->g_env[i] = ft_strdup(env[i]);
