@@ -13,7 +13,7 @@ int	check_char(char c, char *str)
 
 void	hand_quotes(const char *str, int *i)
 {
-	if (str[*i] == '\"')
+	if (str[*i] == '"')
 		while (str[++(*i)] != '\"')
 			;
 	else if (str[*i] == '\'')
@@ -23,13 +23,12 @@ void	hand_quotes(const char *str, int *i)
 
 void	list_cmd(t_msh *msh)
 {
-	int		i;
+	int i;
 	char	*tmp;
 	t_list	*new;
 
 	i = 0;
 	msh->start = 0;
-
 	while (msh->string_name[i])
 	{
 		while (msh->string_name[i] != '|' && msh->string_name[i] != '\0')
@@ -44,7 +43,7 @@ void	list_cmd(t_msh *msh)
 		new = ft_lstnew(tmp);
 		ft_lstadd_back(&msh->g_cmd, new);
 		msh->start = i + 1;
-		while (msh->string_name[i] == '|' || msh->string_name[i] == ' ')
+		if (msh->string_name[i] == '|')
 			i++;
 	}
 //	print_list(msh->g_cmd);

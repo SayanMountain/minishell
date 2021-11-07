@@ -1,5 +1,23 @@
 #include "minishell.h"
 
+void	print_list(t_list *g_cmd)
+{
+	int i;
+	t_list	*tmp;
+
+	tmp = g_cmd;
+	while (tmp)
+	{
+		i = 0;
+		while (tmp->cmd[i])
+		{
+			printf("%s\n", tmp->cmd[i]);
+			i++;
+		}
+		tmp = tmp->next;
+	}
+}
+
 static void ft_get_envp(t_msh *msh, char **env)
 {
 	int i;
@@ -20,8 +38,6 @@ int main (int argc, char **argv, char **env)
 
     (void)argc;
     (void)argv;
-//    printf("TET!!!\n");
-//    exit(0);
     ft_get_envp(&msh, env);
 	invitation(&msh);
 //    signal(SIGINT, aft_sig_handle);

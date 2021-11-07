@@ -18,3 +18,4 @@ size_t	ft_strlcpy(char *str1, const char *str2, size_t size)
 	}
 	return (ft_strlen(str2));
 }
+
