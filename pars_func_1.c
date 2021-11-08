@@ -10,7 +10,7 @@ char	*join_str(char *str, int *i)
 	k = *i;
 
 	skip_quotes(str, i);
-	str1 = ft_substr(str, 0, k - 1);
+	str1 = ft_substr(str, 0, k);
 	str2 = ft_substr(str, k + 1, *i - k - 1);
 	str3 = ft_strdup(str + *i + 1);
 	str1 = ft_strjoin(str1, str2);
@@ -31,16 +31,13 @@ void	remove_quotes(t_msh *msh)
 		j = 0;
 		while (tmp->cmd[j])
 		{
-			i = 0;
-			while (tmp->cmd[j][i])
-			{
+			i = -1;
+			while (tmp->cmd[j][++i])
 				if (check_char(tmp->cmd[j][i], "\'\""))
 				{
 					str = join_str(tmp->cmd[j], &i);
 					rewriting_str(tmp, str, j);
 				}
-				i++;
-			}
 			j++;
 		}
 		tmp = tmp->next;
