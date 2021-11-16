@@ -1,31 +1,20 @@
 #include "minishell.h"
 
-void export(t_msh *msh)
+void run_export(t_msh *msh, t_list *tmp)
 {
-	char *tmp;
-	int i;
-	int tmp3;
-	int tmp4;
+	t_env *new_list;
 
+	if(ft_strchr(tmp->cmd[1], '='))
+	{
+		new_list = ft_lstnew_env(ft_strdup(tmp->cmd[1]));
+		ft_lstadd_back_env(&msh->g_env, new_list);
+	}
+	if(tmp->cmd[2])
+	{
+		printf("export: `%s': not a valid identifier\n", tmp->cmd[2]);
+	}
+	if(tmp->cmd[3])
+		printf("export: `%s': not a valid identifier\n", tmp->cmd[3]);
 
-	i = 0;
-	tmp3 = ft_strlen(msh->string_name);
-	tmp4 = ft_strlen("export");
-	if(tmp3 > tmp4)
-	{
-		if(!ft_strncmp(msh->string_name, "export ", ft_strlen("export ")))
-		{
-			tmp = msh->string_name;
-			tmp = ft_substr(tmp, 7, ft_strlen(msh->string_name) - 7);
-			msh->g_env[i] = tmp;
-		}
-	}
-	else
-	{
-		if(!ft_strncmp(msh->string_name, "export", ft_strlen("export")))
-		{
-			printf("КОД, ЧТОБЫ EXPORT СОРТИРОВАЛ АЛФАВИТУ (key)!!!!!\n");
-		}
-	}
+	printf("осталась сортировка по алфавиту\n");
 }
-

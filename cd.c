@@ -1,39 +1,49 @@
 #include "minishell.h"
 
-static char *go_env(char **env, char *key)
+static char *go_env(t_env *env, char *key)
 {
-	int i = 0;
-	while(env[i])
+	while(env)
 	{
-		if (!ft_strncmp(env[i], key, ft_strlen(key)))
+		if (!ft_strncmp(env->str, key, ft_strlen(key)))
 		{
-			return (env[i]);
+			return (env->str);
 		}
-		i++;
+		env = env->next;
 	}
 	return(NULL);
 }
 
-void cd(t_msh *msh)
+static int count_cmd_len(t_msh *msh)
+{
+	char 	**tmp;
+	int i = 0;
+
+	tmp = msh->g_cmd->cmd;
+	while(tmp[i])
+		i++;
+	return i;
+}
+
+void run_cd_standart(t_msh *msh)
 {
 	char 	*path;
-	int 	i = 0;
+	t_list *tmp;
 
-		if(!ft_strncmp(msh->string_name, "cd ~", ft_strlen("cd ~")))
-		{
-				path = go_env(msh->g_env, "HOME");
-				path = ft_substr(path, 5, ft_strlen(msh->g_env[i]) - 5);
-		}
-		if(!ft_strncmp(msh->string_name, "cd -", ft_strlen("cd -")))
-		{
-			path = go_env(msh->g_env, "OLDPWD");
-			path = ft_substr(path, 7, ft_strlen(msh->g_env[i]) - 7);
-			printf("%s\n", path);
-		}
-		if(!ft_strncmp(msh->string_name, "cd", ft_strlen("cd")))
-		{
+	tmp = msh->g_cmd;
+
+	if(count_cmd_len(msh) == 1 || !ft_strncmp(tmp->cmd[1], "~", ft_strlen("~")))
+	{
 			path = go_env(msh->g_env, "HOME");
-			path = ft_substr(path, 5, ft_strlen(msh->g_env[i]) - 5);
-		}
-		chdir(path);
+			path = ft_substr(path, 5, ft_strlen(path) - 5);
+	} else
+		path = tmp->cmd[1];
+	if(count_cmd_len(msh) == 1 || !ft_strncmp(tmp->cmd[1], "-", ft_strlen("-")))
+	{
+		path = go_env(msh->g_env, "OLDPWD");
+		path = ft_substr(path, 5, ft_strlen(path) - 5);
+	}
+	chdir(path);
+
+	printf("не меняет OLDPWD\n");
+	printf("руками поменять OLDPWD\n");
 }

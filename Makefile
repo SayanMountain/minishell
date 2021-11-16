@@ -6,10 +6,14 @@ LIBS		= -L ./libft -lft -lreadline
 LIST		=  	main.c 						\
 				menu.c   					\
 				./GNL/get_next_line.c		\
+				check_pars_cmd.c			\
 				pars_func_0.c 				\
 				pars_func_1.c				\
+				addit_func.c				\
+				preparser.c 				\
 				parser.c 					\
 				lst_functions.c				\
+				lst_func_env.c				\
 				all_com.c					\
 				cd.c						\
 				pwd.c						\
@@ -17,7 +21,6 @@ LIST		=  	main.c 						\
 				export.c					\
 				exit.c						\
 				redirect.c					\
-				pipes.c						\
 				unset.c						\
 				env.c						\
 

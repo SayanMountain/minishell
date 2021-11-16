@@ -1,5 +1,12 @@
 #include "minishell.h"
 
+void	rewriting_str(t_list *tmp, char *str, int j)
+{
+	free(tmp->cmd[j]);
+	tmp->cmd[j] = NULL;
+	tmp->cmd[j] = str;
+}
+
 int	check_char(char c, char *str)
 {
 	while (*str)
@@ -11,17 +18,26 @@ int	check_char(char c, char *str)
 	return (0);
 }
 
-void	skip_quotes(const char *str, int *i)
+int	skip_quotes(const char *str, int *i)
 {
 	if (str[*i] == '\"')
 		while (str[++(*i)] != '\"')
-			;
-	else if (str[*i] == '\'')
+			if (str[*i] == '\0')
+			{
+				error_msg(1, ' ');
+				return (1);
+			}
+	if (str[*i] == '\'')
 		while (str[++(*i)] != '\'')
-			;
+			if (str[*i] == '\0')
+			{
+				error_msg(1, ' ');
+				return (1);
+			}
+	return (0);
 }
 
-void	list_cmd(t_msh *msh)
+int	list_cmd(t_msh *msh)
 {
 	int		i;
 	char	*tmp;
@@ -29,13 +45,14 @@ void	list_cmd(t_msh *msh)
 
 	i = 0;
 	msh->start = 0;
-
+	msh->g_cmd = NULL;
 	while (msh->string_name[i])
 	{
 		while (msh->string_name[i] != '|' && msh->string_name[i] != '\0')
 		{
 			if (check_char(msh->string_name[i], "'\""))
-				skip_quotes(msh->string_name, &i);
+				if (skip_quotes(msh->string_name, &i))
+					return (1);
 			i++;
 		}
 		tmp = ft_substr(msh->string_name, msh->start, i - msh->start);
@@ -46,4 +63,5 @@ void	list_cmd(t_msh *msh)
 			msh->string_name[i])
 			i++;
 	}
+	return (0);
 }

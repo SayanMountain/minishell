@@ -1,33 +1,31 @@
 #include "minishell.h"
 
-static char *go_echo(char **env, char *key)
-{
-	int i = 0;
-	while(env[i])
-	{
-		if (!ft_strncmp(env[i], key, ft_strlen(key)))
-		{
-			return (env[i]);
-		}
-		i++;
-	}
-	return(NULL);
-}
-
 void	run_echo(t_msh *msh)
 {
-	char	*echo;
+	int	i;
+	int	logic;
+	t_list *tmp;
 
-	if(!ft_strncmp(msh->string_name, "echo", ft_strlen("echo")))
+	tmp = msh->g_cmd;
+	i = 1;
+	logic = 1;
+	if (tmp->cmd[0] && !tmp->cmd[1])
+		printf("\n");
+	if (tmp->cmd[1])
 	{
-		echo = go_echo(&msh->string_name, "echo");
-		echo = ft_substr(echo, 5, ft_strlen(msh->string_name) - 5);
-		printf("%s\n", echo);
-	}
-	if(!ft_strncmp(msh->string_name, "echo -n", ft_strlen("echo -n")))
-	{
-		echo = go_echo(&msh->string_name, "echo -n");
-		echo = ft_substr(echo, 8, ft_strlen(msh->string_name) - 8);
-		ft_putstr_fd(echo, 1);
+		if(ft_strcmp(tmp->cmd[i], "-n") == 0)
+			logic = 0;
+		while(tmp->cmd[i])
+		{
+			if(ft_strcmp(tmp->cmd[i], "-n"))
+			{
+				ft_putstr_fd(tmp->cmd[i], 1);
+				if (tmp->cmd[i + 1] && ft_strlen(tmp->cmd[i + 1]))
+					write(1, " ", 1);
+			}
+			i++;
+		}
+	if (logic)
+		write(1, "\n", 1);
 	}
 }

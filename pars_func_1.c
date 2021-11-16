@@ -1,5 +1,49 @@
 #include "minishell.h"
 
+char	*join_str(char *str, int *i)
+{
+	int k;
+	char	*str1;
+	char	*str2;
+	char	*str3;
+
+	k = *i;
+
+	skip_quotes(str, i);
+	str1 = ft_substr(str, 0, k);
+	str2 = ft_substr(str, k + 1, *i - k - 1);
+	str3 = ft_strdup(str + *i + 1);
+	str1 = ft_strjoin(str1, str2);
+	str1 = ft_strjoin(str1, str3);
+	return (str1);
+}
+
+void	remove_quotes(t_msh *msh)
+{
+	int	j;
+	int i;
+	char	*str;
+	t_list	*tmp;
+
+	tmp = msh->g_cmd;
+	while (tmp)
+	{
+		j = 0;
+		while (tmp->cmd[j])
+		{
+			i = -1;
+			while (tmp->cmd[j][++i])
+				if (check_char(tmp->cmd[j][i], "\'\""))
+				{
+					str = join_str(tmp->cmd[j], &i);
+					rewriting_str(tmp, str, j);
+				}
+			j++;
+		}
+		tmp = tmp->next;
+	}
+}
+
 void	check_space(t_msh *msh, t_list *tmp, int *i)
 {
 	while (tmp->str[*i] && tmp->str[*i] == ' ')
@@ -22,12 +66,10 @@ void	write_arr(t_msh *msh, t_list *tmp, int i)
 	new_str = ft_substr(tmp->str, msh->start, i - msh->start);
 	new_arr[msh->len_arr] = new_str;
 	new_arr[msh->len_arr + 1] = NULL;
-	free(tmp->cmd);
+//	free(tmp->cmd);
 	tmp->cmd = new_arr;
 	msh->len_arr++;
 }
-
-
 
 void	split_str_cmd(t_msh *msh)
 {
@@ -57,39 +99,3 @@ void	split_str_cmd(t_msh *msh)
 	}
 }
 
-//void	write_arr_2(t_msh *msh, char *str)
-//{
-//	int		k;
-//	char	**new_arr;
-//
-//	k = -1;
-//	new_arr = (char **)malloc(sizeof(char *) * (msh->len_arr + 2));
-//	if (!new_arr)
-//		return;
-//	while (++k < msh->len_arr)
-//		new_arr[k] = msh->g_cmd->cmd[k];
-//	new_arr[msh->len_arr] = str;
-//	new_arr[msh->len_arr + 1] = NULL;
-//	//	free(old_arr);
-//	msh->g_cmd->cmd = new_arr;
-//}
-
-//char	*remove_quotes(t_msh *msh, t_list *tmp, int *i)
-//{
-//	int j;
-//	char	*str1;
-//	char	*str2;
-//	char	*str3;
-//
-//	j = *i;
-//	hand_quotes(tmp->str, i);
-//	str1 = ft_substr(tmp->str, 0, j - 1);
-//	str2 = ft_substr(tmp->str, j + 1, *i - j - 1);
-//	j = *i;
-//	while (tmp->str[(*i) + 1] != ' ')
-//		(*i)++;
-//	str3 = ft_substr(tmp->str, j + 1, *i - j);
-//	str1 = ft_strjoin(str1, str2);
-//	str1 = ft_strjoin(str1, str3);
-//	return (str1);
-//}

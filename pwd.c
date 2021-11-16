@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void pwd(void)
+void run_pwd()
 {
 	char 	buffer[1000];
 	if (getcwd(buffer, 200) == 0)
