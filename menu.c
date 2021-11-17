@@ -2,13 +2,17 @@
 
 void invitation(t_msh *msh)
 {
-	char	*string_invite;
 
 	while(1)
 	{
-		string_invite = ft_strdup("minishell> ");
-		msh->string_name = readline(string_invite);
-		add_history(msh->string_name);
-		parser(msh);
+		msh->str_name = readline("minishell> ");
+		add_history(msh->str_name);
+		if (preparser(msh))
+			continue;
+		if (parser(msh))
+			continue;
+		check_cmd(msh);
+		all_command(msh);
+		clean_lists(msh);
 	}
 }

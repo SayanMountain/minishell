@@ -1,5 +1,29 @@
 #include "minishell.h"
 
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*tmp;
+
+	tmp = lst;
+	if (lst == NULL)
+		return (lst);
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	return (tmp);
+}
+
+t_list	*ft_lstnew(char *content)
+{
+	t_list	*new;
+
+	new = (t_list *)malloc(sizeof(t_list));
+	if (new == NULL)
+		return (NULL);
+	new->str = content;
+	new->next = NULL;
+	return (new);
+}
+
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
@@ -14,30 +38,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 			tmp->next = new;
 		}
 	}
-}
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	t_list	*tmp;
-
-	tmp = lst;
-	if (lst == NULL)
-		return (lst);
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	return (tmp);
-}
-
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*new;
-
-	new = (t_list *)malloc(sizeof(t_list));
-	if (new == NULL)
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
 }
 
 int	ft_lstsize(t_list *lst)
