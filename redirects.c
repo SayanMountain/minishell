@@ -1,19 +1,5 @@
 #include "minishell.h"
 
-void	printnl_exit(void)
-{
-	write(2, "\n", 1);
-//	g_status = 1;
-	exit(1);
-}
-
-void	heredoc_signal(void)
-{
-	signal(SIGTERM, SIG_DFL);
-	signal(SIGINT, (void *)printnl_exit);
-	signal(SIGQUIT, SIG_DFL);
-}
-
 void	double_left_red(t_list *tmp, t_msh *msh, char *file)
 {
 	int	pid;
@@ -21,25 +7,13 @@ void	double_left_red(t_list *tmp, t_msh *msh, char *file)
 	(void )msh;
 	(void )tmp;
 	(void )file;
-	int status;
 
 	pipe(tmp->pipe_h);
 	pid = fork();
 	if (pid == 0)
-	{
-		heredoc_signal();
 		redirect_child(tmp, file);
-	}
 	else
-		waitpid(pid, &status, 0);
-	close(tmp->pipe_h[1]);
-	status = WEXITSTATUS(status);
-	if (status == 1)
-	{
-//		g_status = 1;
-		close(tmp->pipe_h[0]);
-		return ;
-	}
+		redirect_parent(tmp, msh, pid);
 
 }
 
@@ -79,9 +53,10 @@ int 	redirect(t_msh *msh, t_list *tmp, int *i)
 {
 	char	*spec_ch;
 	char	*file;
-	(void )tmp;
+	int		k;
+
+
 	spec_ch = ft_substr(msh->str_name, msh->start, *i - msh->start);
-//	printf("spec - %s\n", spec_ch);
 	check_space(msh, msh->str_name, i);
 	while (msh->str_name[*i] && msh->str_name[*i] != ' ')
 	{
@@ -90,10 +65,11 @@ int 	redirect(t_msh *msh, t_list *tmp, int *i)
 		(*i)++;
 	}
 	file = ft_substr(msh->str_name, msh->start, *i - msh->start);
-//	printf("File - %s\n", file);
-//	printf("spec - %s\n", file);
 	check_space(msh, msh->str_name, i);
-	if (open_redirect(tmp, msh, spec_ch, file))
+	k = open_redirect(tmp, msh, spec_ch, file);
+	free(spec_ch);
+	free(file);
+	if (k)
 		return (1);
 	return (0);
 }

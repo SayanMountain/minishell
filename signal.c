@@ -6,7 +6,7 @@
 /*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 13:01:29 by pjeffere          #+#    #+#             */
-/*   Updated: 2021/11/19 13:01:41 by pjeffere         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:50:24 by bmohamme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	ft_signal_cltr_c(int sig)
 {
 	(void)sig;
 	write(2, "\n", 1);
-	rl_replace_line("", 0);
+//	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
-	g_status = "130";
+//	g_status = "130";
 }
 
 void	ft_signal_in_child(void)

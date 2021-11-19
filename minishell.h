@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bmohamme <bmohamme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 16:19:33 by pjeffere          #+#    #+#             */
-/*   Updated: 2021/11/19 16:19:35 by pjeffere         ###   ########.fr       */
+/*   Created: 2021/11/19 23:47:53 by bmohamme          #+#    #+#             */
+/*   Updated: 2021/11/19 23:47:53 by bmohamme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@
 # include <curses.h>
 # include <term.h>
 
+// понять как использовать
 #define STDOUT					0
 #define STDIN 					1
 
-char 			*g_status;
+//char	*g_status;
 
 typedef enum e_errors
 {
@@ -74,15 +75,18 @@ typedef struct 			s_msh
 	char				*str_name;
     int                 len_arr;
     int                 start;
-
+	char				*val_baks;
 	/* pipes part */
 	int 				**pipe_fd;
 	int 				num_of_cmd;
 }						t_msh;
 
+//main
+void	ctrl_ign(void);
+
+
 //menu
 void 	invitation(t_msh *msh);
-
 
 //check_pars_cmd
 char	*check_cmd(t_msh *msh, char *str);
@@ -112,12 +116,6 @@ void    write_arr(t_msh *msh, t_list *tmp, int *i);
 void	remove_quotes(t_msh *msh);
 char	*join_str(t_msh *msh, char *str, int *i);
 
-//void    split_str_cmd(t_msh *msh);
-//void	split_str(t_msh *msh, t_list *tmp);
-//void    write_arr(t_msh *msh, t_list *tmp, int *i);
-//void	remove_quotes(t_msh *msh);
-//char	*join_str(char *str, int *i);
-
 //redirects
 int 	redirect(t_msh *msh, t_list *tmp, int *i);
 int 	open_redirect(t_list *tmp, t_msh *msh, char *spec_ch, char *file);
@@ -140,8 +138,13 @@ t_list	*ft_lstnew(char *content);
 t_env	*ft_lstlast_env(t_env *lst);
 t_env	*ft_lstnew_env(char *content);
 void	ft_lstadd_back_env(t_env **lst, t_env *new);
-int		ft_lstsize1(t_list *lst);
-int		ft_lstsize_2_env(t_env *lst);
+//int		ft_lstsize1(t_list *lst);
+//int		ft_lstsize_2_env(t_env *lst);
+
+//baks
+int		check_baks(t_msh *msh, char *str, int *i);
+char	*baks(t_msh *msh, char *str, int *i);
+char	*value(char *str);
 
 /* pipes */
 int 	pipes (char **envp, t_msh *msh);
@@ -155,7 +158,7 @@ void	ft_signal_cltr_c_2(int sig);
 
 /* builind.c */
 int		all_command(t_msh *msh);
-void chose_builtin(t_list *tmp, t_msh *msh, bool is_pipes);
+void	chose_builtin(t_list *tmp, t_msh *msh);
 int		ft_strcmp(const char *s1, const char *s2);
 void	run_pwd(void);
 void 	run_echo(t_msh *msh);
@@ -165,6 +168,7 @@ void	not_found(t_msh *msh);
 void	run_export(t_msh *msh, t_list *tmp);
 void 	run_unset(t_msh  *msh, t_list *tmp);
 void	run_cd_standart(t_msh *msh);
+
 
 /* print.c */
 int     print_msg(t_errors err);
@@ -177,7 +181,6 @@ void	ft_signal_cltr_c(int sig);
 void	ft_signal_in_child(void);
 void	ft_signal_main(void);
 
-
 //pipes
 void	many_pipe(t_msh *msh, t_list *tmp, int i);
 void	without_pipe(t_msh *msh, t_list *tmp);
@@ -189,10 +192,5 @@ void	one_pipe(t_msh *msh, int i);
 void	more_than_2_pipe(t_msh *msh, int i);
 void	last_pipe(t_msh *msh, int i);
 int		ft_strcmp(const char *s1, const char *s2);
-
-//baks
-int		check_baks(t_msh *msh, char *str, int *i);
-char	*baks(t_msh *msh, char *str, int *i);
-char	*value(char *str);
 
 #endif

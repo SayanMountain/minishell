@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_pars_cmd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bmohamme <bmohamme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 16:19:33 by pjeffere          #+#    #+#             */
-/*   Updated: 2021/11/19 16:19:35 by pjeffere         ###   ########.fr       */
+/*   Created: 2021/11/19 21:04:21 by bmohamme          #+#    #+#             */
+/*   Updated: 2021/11/19 22:15:49 by bmohamme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	*ft_access(char *str, char **arr)
 	char	*string;
 
 	i = -1;
+	string = NULL;
 	while (arr[++i])
 	{
 		string = ft_strjoin(arr[i], "/");
@@ -57,6 +58,5 @@ char	*check_cmd(t_msh *msh, char *str)
 		error_msg(5, 0);
 		exit(1);
 	}
-	else
-		return (string);
+	return (string);
 }

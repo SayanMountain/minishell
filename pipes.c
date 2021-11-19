@@ -6,7 +6,7 @@
 /*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:14:14 by pjeffere          #+#    #+#             */
-/*   Updated: 2021/11/19 17:14:16 by pjeffere         ###   ########.fr       */
+/*   Updated: 2021/11/20 00:04:08 by bmohamme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,9 @@ void	pipe_close(t_msh *msh)
 	{
 		close(msh->pipe_fd[j][0]);
 		close(msh->pipe_fd[j][1]);
+		free(msh->pipe_fd[j]);
 	}
+	free(msh->pipe_fd);
 }
 
 void	pipe_waitpid(t_msh *msh)

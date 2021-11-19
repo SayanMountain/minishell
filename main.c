@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 16:19:33 by pjeffere          #+#    #+#             */
-/*   Updated: 2021/11/19 16:19:35 by pjeffere         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
-static void	ctrl_ign(void)
+void	ctrl_ign(void)
 {
 	struct termios	ts;
 
@@ -38,6 +26,28 @@ void	print_list(t_list *g_cmd)
 		}
 		printf("Конец массива <-\n");
 		tmp = tmp->next;
+	}
+}
+
+void invitation(t_msh *msh)
+{
+
+	while(1)
+	{
+		msh->str_name = readline("minishell> ");
+		add_history(msh->str_name);
+		if(msh->str_name == NULL)
+		{
+			printf("exit\n"); /// статус прикрутить
+			exit(0);
+		}
+		if (preparser(msh))
+			continue;
+		if (parser(msh))
+			continue;
+		//		check_cmd(msh);
+		all_command(msh);
+		clean_lists(msh);
 	}
 }
 
@@ -76,7 +86,7 @@ int main (int argc, char **argv, char **env)
 {
 	t_msh	msh;
 
-	g_status = NULL;
+//	g_status = "0";
 	ctrl_ign();
 	ft_signal_main();
     (void)argc;
@@ -84,8 +94,6 @@ int main (int argc, char **argv, char **env)
     ft_get_envp(&msh, env);
 	invitation(&msh);
 
-//    signal(SIGINT, aft_sig_handle);
-//    signal(SIGQUIT, ft_sig_handle);
 //	exit(0);
     return (0);
 }

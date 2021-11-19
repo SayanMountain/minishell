@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   addit_func.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bmohamme <bmohamme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 16:19:33 by pjeffere          #+#    #+#             */
-/*   Updated: 2021/11/19 16:19:35 by pjeffere         ###   ########.fr       */
+/*   Created: 2021/11/20 00:34:21 by bmohamme          #+#    #+#             */
+/*   Updated: 2021/11/20 00:34:21 by bmohamme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	error_msg(int i, char c)
 	if (i == 5)
 	{
 		printf("127: command not found\n");
-		g_status = "127";
+//		g_status = "127: command not found";
 	}
+
+	//	exit(1);
 }
 
 void	clean_lists(t_msh *msh)
@@ -48,6 +50,7 @@ void	clean_lists(t_msh *msh)
 		if (tmp->str)
 			free(tmp->str);
 		tmp->str = NULL;
+		free(tmp->cmd);
 		tmp->cmd = NULL;
 		tmp = tmp->next;
 		free(msh->g_cmd);

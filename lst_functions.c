@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   lst_functions.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 17:14:46 by pjeffere          #+#    #+#             */
-/*   Updated: 2021/11/19 17:14:47 by pjeffere         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 t_list	*ft_lstlast(t_list *lst)
@@ -65,15 +53,3 @@ int	ft_lstsize(t_list *lst)
 	return (i);
 }
 
-int	ft_lstsize_2_env(t_env *lst)
-{
-	int		i;
-
-	i = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pars_func_0.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 16:22:06 by pjeffere          #+#    #+#             */
-/*   Updated: 2021/11/19 16:22:08 by pjeffere         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 void	rewriting_str(t_list *tmp, char *str, int j)
@@ -32,9 +20,7 @@ int	check_char(char c, char *str)
 
 int	skip_quotes(t_msh *msh, char *str, int *i)
 {
-	(void)msh;
 	if (str[*i] == '\"')
-	{
 		while (str[++(*i)] != '\"')
 		{
 			if (str[*i] == '\0')
@@ -42,23 +28,23 @@ int	skip_quotes(t_msh *msh, char *str, int *i)
 				error_msg(1, ' ');
 				return (1);
 			}
+			if (str[*i] == '$')
+			{
+				msh->val_baks = baks(msh, str, i);
+				(*i)--;
+			}
 		}
-	}
 	if (str[*i] == '\'')
-	{
 		while (str[++(*i)] != '\'')
-		{
 			if (str[*i] == '\0')
 			{
 				error_msg(1, ' ');
 				return (1);
 			}
-		}
-	}
 	return (0);
 }
 
-int	creat_list(char *str, t_msh *msh, int *i)
+int 	creat_list(char *str, t_msh *msh, int *i)
 {
 	t_list	*new;
 
@@ -67,8 +53,6 @@ int	creat_list(char *str, t_msh *msh, int *i)
 	new->red_outp = -1;
 	new->pipe_or_word = NULL;
 	msh->start = *i;
-	new->pipe_h[0] = -1;
-	new->pipe_h[1] = -1;
 	while (check_char(msh->str_name[*i], "<>") && msh->str_name[*i])
 		(*i)++;
 	if (redirect(msh, new, i))
@@ -87,8 +71,8 @@ int	list_cmd(t_msh *msh)
 	msh->g_cmd = NULL;
 	while (msh->str_name[i])
 	{
-		while (!check_char(msh->str_name[i], "|<>") && \
-							msh->str_name[i] != '\0')
+		while (!check_char(msh->str_name[i], "|<>") &&
+		msh->str_name[i] != '\0')
 		{
 			if (check_char(msh->str_name[i], "'\""))
 				if (skip_quotes(msh, msh->str_name, &i))
@@ -97,7 +81,10 @@ int	list_cmd(t_msh *msh)
 		}
 		tmp = ft_substr(msh->str_name, msh->start, i - msh->start);
 		if (creat_list(tmp, msh, &i))
+		{
+			free(tmp);
 			return (1);
+		}
 	}
 	return (0);
 }

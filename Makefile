@@ -5,10 +5,10 @@ HEADER		= 	minishell.h
 LIBS		= -L ./libft -lft -lreadline
 
 LIST		=  	main.c 						\
-				menu.c   					\
 				./GNL/get_next_line.c		\
 				pars_func_0.c 				\
 				pars_func_1.c				\
+				redirects.c					\
 				preparser.c					\
 				parser.c 					\
 				check_pars_cmd.c			\
@@ -20,16 +20,15 @@ LIST		=  	main.c 						\
 				echo.c						\
 				export.c					\
 				exit.c						\
+				pipes.c						\
 				unset.c						\
 				env.c						\
 				baks.c						\
 				addit_func.c				\
+				command_processing.c		\
 				fork_herdoc.c				\
 				signal.c					\
-				redirects.c					\
-				pipes.c						\
 				pipes_utils.c				\
-
 
 GCC			= gcc
 

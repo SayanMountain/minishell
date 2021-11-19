@@ -8,10 +8,9 @@ LIST		= ft_strncmp.c ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii
 
 OBJ			= $(LIST:.c=.o)
 
-FLAGS       = -Wall -Wextra -Werror
+CC 			= gcc
 
-.o:.c
-		    gcc $(FLAGS) -c $< -o $(<:.c=.o) -I .
+CFLAGS		= -Wall -Wextra -Werror
 
 $(NAME) :	$(OBJ) $(HEADER)
 			ar rc $(NAME) $(OBJ)

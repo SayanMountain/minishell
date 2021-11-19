@@ -6,7 +6,7 @@
 /*   By: bmohamme <bmohamme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:01:23 by bmohamme          #+#    #+#             */
-/*   Updated: 2021/11/17 19:12:27 by bmohamme         ###   ########.fr       */
+/*   Updated: 2021/11/19 17:03:39 by bmohamme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,28 +63,14 @@
 //	}
 //}
 
-void	change_global(void)
-{
-	write(2, "\n", 1);
-//	g_status = 130;
-}
-
-void	signal_pipes_cmd(void)
-{
-	signal(SIGINT, (void *)change_global);
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGTERM, SIG_IGN);
-}
-
 int parser(t_msh *msh)
 {
-	signal_pipes_cmd();
 	if (list_cmd(msh))
 		return(1);
 //	signal_pipes_cmd();
-	split_str_cmd(msh);
+	if (split_str_cmd(msh))
+		return (1);
 	remove_quotes(msh);
-	ft_signal_main();
 //	main_signals();
 //	print_list(msh->g_cmd);
 	return(0);

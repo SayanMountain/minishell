@@ -76,7 +76,7 @@ int 	split_str(t_msh *msh, t_list *tmp)
 			if (check_char(tmp->str[i], "\'\""))
 			{
 				skip_quotes(msh, tmp->str, &i);
-//				printf("%s\n", msh->val_baks);
+				printf("%s\n", msh->val_baks);
 				return (1);
 			}
 			if (check_baks(msh, tmp->str, &i))

@@ -6,7 +6,7 @@
 /*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:14:46 by pjeffere          #+#    #+#             */
-/*   Updated: 2021/11/19 17:14:47 by pjeffere         ###   ########.fr       */
+/*   Updated: 2021/11/19 23:58:34 by bmohamme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	check(t_msh *msh, t_list *tmp, int i)
 
 void	without_pipe(t_msh *msh, t_list *tmp)
 {
-//	int		pid;
+	int		pid;
 
-//	pid = fork();
-//	if (pid == 0)
-		chose_builtin(tmp, msh, false);
-//	else
-//		wait(&pid);
+	pid = fork();
+	if (pid == 0)
+		chose_builtin(tmp, msh);
+	else
+		wait(&pid);
 }
 
 void	many_pipe(t_msh *msh, t_list *tmp, int i)
@@ -60,7 +60,7 @@ void	many_pipe(t_msh *msh, t_list *tmp, int i)
 				more_than_2_pipe(msh, i);
 			if (tmp->next == NULL)
 				last_pipe(msh, i);
-			chose_builtin(tmp, msh, true);
+			chose_builtin(tmp, msh);
 		}
 		i++;
 		tmp = tmp->next;

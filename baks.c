@@ -23,14 +23,6 @@ int		check_baks(t_msh *msh, char *str, int *i)
 	return (0);
 }
 
-//char	*code_error(void )
-//{
-//	char	*str;
-//
-//	str = ft_itoa(g_status);
-//	return (str);
-//}
-
 char	*baks(t_msh *msh, char *str, int *i)
 {
 	char	*s;
@@ -38,8 +30,8 @@ char	*baks(t_msh *msh, char *str, int *i)
 	int		k;
 
 	j = ++(*i);
-	if (*i == '?')
-		return (g_status);
+//	if (*i == '?')
+//		return (g_status);
 	while (str[*i] && str[*i] != ' ' && str[*i] != '\"')
 		(*i)++;
 	s = ft_substr(str, j, *i - j);

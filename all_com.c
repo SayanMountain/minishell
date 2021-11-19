@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-void chose_builtin(t_list *tmp, t_msh *msh, bool is_pipes)
+void	chose_builtin(t_list *tmp, t_msh *msh)
 {
 	if (!ft_strncmp(tmp->cmd[0], "cd", ft_strlen("cd")))
 		run_cd_standart(msh);
@@ -29,18 +29,7 @@ void chose_builtin(t_list *tmp, t_msh *msh, bool is_pipes)
 	else if (!ft_strncmp(tmp->cmd[0], "env", ft_strlen("env")))
 		run_env(msh);
 	else
-	{
-		if (is_pipes)
-			execve(check_cmd(msh, tmp->cmd[0]), tmp->cmd, msh->a_env);
-		else
-		{
-			int pid = fork();
-			if (pid == 0)
-				execve(check_cmd(msh, tmp->cmd[0]), tmp->cmd, msh->a_env);
-			else
-				wait(&pid);
-		}
-	}
+		execve(check_cmd(msh, tmp->cmd[0]), tmp->cmd, msh->a_env);
 }
 
 int	all_command(t_msh *msh)

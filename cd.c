@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 16:06:06 by pjeffere          #+#    #+#             */
-/*   Updated: 2021/11/19 16:06:08 by pjeffere         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 static char	*go_env(t_env *env, char *key)
@@ -43,16 +31,14 @@ void	run_cd_standart(t_msh *msh)
 	t_list		*tmp;
 
 	tmp = msh->g_cmd;
-	if (count_cmd_len(msh) == 1 || \
-		!ft_strncmp(tmp->cmd[1], "~", ft_strlen("~")))
+	if (count_cmd_len(msh) == 1 || !ft_strncmp(tmp->cmd[1], "~", ft_strlen("~")))
 	{
 		path = go_env(msh->g_env, "HOME");
 		path = ft_substr(path, 5, ft_strlen(path) - 5);
 	}
 	else
 		path = tmp->cmd[1];
-	if (count_cmd_len(msh) == 1 || \
-		!ft_strncmp(tmp->cmd[1], "-", ft_strlen("-")))
+	if (count_cmd_len(msh) == 1 || !ft_strncmp(tmp->cmd[1], "-", ft_strlen("-")))
 	{
 		path = go_env(msh->g_env, "OLDPWD");
 		path = ft_substr(path, 5, ft_strlen(path) - 5);
