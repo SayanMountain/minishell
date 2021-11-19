@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_functions.c                                    :+:      :+:    :+:   */
+/*   lst_func_env.c                                      :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,23 +12,23 @@
 
 #include "minishell.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_env	*ft_lstlast_env(t_env *lst)
 {
-	t_list	*tmp;
+	t_env	*tmp;
 
 	tmp = lst;
-	if (lst == NULL)
-		return (lst);
+	if (tmp == NULL)
+		return (tmp);
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	return (tmp);
 }
 
-t_list	*ft_lstnew(char *content)
+t_env	*ft_lstnew_env(char *content)
 {
-	t_list	*new;
+	t_env	*new;
 
-	new = (t_list *)malloc(sizeof(t_list));
+	new = (t_env *)malloc(sizeof(t_env));
 	if (new == NULL)
 		return (NULL);
 	new->str = content;
@@ -36,9 +36,9 @@ t_list	*ft_lstnew(char *content)
 	return (new);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back_env(t_env **lst, t_env *new)
 {
-	t_list	*tmp;
+	t_env	*tmp;
 
 	if (lst && new)
 	{
@@ -46,34 +46,22 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 			*lst = new;
 		else
 		{
-			tmp = ft_lstlast(*lst);
+			tmp = ft_lstlast_env(*lst);
 			tmp->next = new;
 		}
 	}
 }
 
-int	ft_lstsize(t_list *lst)
+
+int	ft_lstsize1(t_list *lst)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while (lst != NULL)
+	while (lst)
 	{
-		lst = lst->next;
 		i++;
-	}
-	return (i);
-}
-
-int	ft_lstsize_2_env(t_env *lst)
-{
-	int		i;
-
-	i = 0;
-	while (lst != NULL)
-	{
 		lst = lst->next;
-		i++;
 	}
 	return (i);
 }

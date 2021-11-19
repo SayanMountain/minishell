@@ -1,55 +1,98 @@
-//#include "minishell.h"
-//
-//void	create_and_launch_pipes(t_msh *msh)
-//{
-//	int i;
-//
-//	/**		маллок на количество команд(аргументов) в строке.
-//	 **		уточнить/найти значение total_cmd (Евгений)
-//	 **/
-//	msh->num_of_cmd = 1;
-//	msh->pipe_fd = malloc(sizeof(int *) * (msh->num_of_cmd));
-//
-//	i = 0;
-//	while(i < msh->num_of_cmd)
-//	{
-//		msh->pipe_fd[i] = malloc(sizeof(int) * 2);
-//		if(msh->pipe_fd[i])
-//		{
-//			if(pipe(msh->pipe_fd[i]))
-//			{
-//				print_msg(ERROR_in_pipes);
-//				free(msh->pipe_fd[i]), msh->pipe_fd[i] = NULL;
-//				return ;
-//			}
-//			else
-//				print_msg(Error_in_malloc);
-//			i++;
-//		}
-//		msh->pipe_fd[i] = NULL;
-//	}
-//}
-//
-//void	close_opened_pipes(int pipe_id, t_msh *msh, t_cmd)
-//{
-//	int i;
-//
-//	i = 0;
-//	pipe_id -= 1;
-//	while(msh->pipe_fd[i] && msh->pipe_fd[i + 1])
-//	{
-//		if(i != pipe_id)
-//			close(msh->pipe_fd[i + 1] [1]), msh->pipe_fd[i + 1][1] = -1;
-//		i++;
-//	}
-//	if(msh->pipe_fd[0] && pipe_id != -1)
-//		close(msh->pipe_fd[0] [1]), msh->pipe_fd[0][1] = -1;
-//	i = 0;
-//	while(msh->pipe_fd[i])
-//	{
-//		if(i != pipe_id)
-//			close(msh->pipe_fd[i][0]), msh->pipe_fd[i][0] = -1;
-//		i++;
-//	}
-//	if(msh->pipe_fd[pipe_id] && msh->)
-//}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipes.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/19 17:14:14 by pjeffere          #+#    #+#             */
+/*   Updated: 2021/11/19 17:14:16 by pjeffere         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+void	one_pipe(t_msh *msh, int i)
+{
+	int	j;
+
+	j = -1;
+	while (++j < msh->num_of_cmd)
+	{
+		if (msh->pipe_fd[j][1] == msh->pipe_fd[i + 1][1])
+			continue ;
+		close(msh->pipe_fd[j][1]);
+	}
+	j = -1;
+	while (++j < msh->num_of_cmd)
+	{
+		close(msh->pipe_fd[j][0]);
+	}
+	dup2(msh->pipe_fd[i + 1][1], 1);
+	close(msh->pipe_fd[i + 1][1]);
+}
+
+void	more_than_2_pipe(t_msh *msh, int i)
+{
+	int	j;
+
+	j = -1;
+	while (++j < msh->num_of_cmd)
+	{
+		if (msh->pipe_fd[j][1] == msh->pipe_fd[i + 1][1])
+			continue ;
+		close(msh->pipe_fd[j][1]);
+	}
+	j = -1;
+	while (++j < msh->num_of_cmd)
+	{
+		if (msh->pipe_fd[j][0] == msh->pipe_fd[i][0])
+			continue ;
+		close(msh->pipe_fd[j][0]);
+	}
+	dup2(msh->pipe_fd[i][0], 0);
+	dup2(msh->pipe_fd[i + 1][1], 1);
+	close(msh->pipe_fd[i][0]);
+	close(msh->pipe_fd[i + 1][1]);
+}
+
+void	last_pipe(t_msh *msh, int i)
+{
+	int	j;
+
+	j = -1;
+	while (++j < msh->num_of_cmd)
+	{
+		if (msh->pipe_fd[j][0] == msh->pipe_fd[i][0])
+			continue ;
+		close(msh->pipe_fd[j][0]);
+	}
+	j = -1;
+	while (++j < msh->num_of_cmd)
+	{
+		close(msh->pipe_fd[j][1]);
+	}
+	dup2(msh->pipe_fd[i][0], 0);
+	close(msh->pipe_fd[i][0]);
+}
+
+void	pipe_close(t_msh *msh)
+{
+	int	j;
+
+	j = -1;
+	while (++j < msh->num_of_cmd)
+	{
+		close(msh->pipe_fd[j][0]);
+		close(msh->pipe_fd[j][1]);
+	}
+}
+
+void	pipe_waitpid(t_msh *msh)
+{
+	int		i;
+
+	i = -1;
+	while (++i < msh->num_of_cmd)
+		waitpid(-1, 0, 0);
+}

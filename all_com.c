@@ -1,52 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   all_com.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pjeffere <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/19 16:25:18 by pjeffere          #+#    #+#             */
+/*   Updated: 2021/11/19 16:25:29 by pjeffere         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-//https://github.com/Avchar/minishell/blob/develop/srcs/own_progc.c
-
-void	all_command(t_msh *msh)
+void chose_builtin(t_list *tmp, t_msh *msh, bool is_pipes)
 {
-	int i;
-
-	i = 0;
-	while(msh->g_cmd->cmd[i])
+	if (!ft_strncmp(tmp->cmd[0], "cd", ft_strlen("cd")))
+		run_cd_standart(msh);
+	else if (!ft_strncmp(tmp->cmd[0], "pwd", ft_strlen("pwd")))
+		run_pwd();
+	else if (!ft_strncmp(tmp->cmd[0], "echo", ft_strlen("echo")))
+		run_echo(msh);
+	else if (!ft_strncmp(tmp->cmd[0], "export", ft_strlen("export")))
+		run_export(msh, msh->g_cmd);
+	else if (!ft_strncmp(tmp->cmd[0], "unset", ft_strlen("unset")))
+		run_unset(msh, msh->g_cmd);
+	else if (!ft_strncmp(tmp->cmd[0], "exit", ft_strlen("exit")))
+		run_exit(msh);
+	else if (!ft_strncmp(tmp->cmd[0], "env", ft_strlen("env")))
+		run_env(msh);
+	else
 	{
-	if(!ft_strncmp(msh->g_cmd->cmd[i], "cd", ft_strlen("cd")))
-		cd(msh);
-//	if(msh->g_cmd->cmd[i] == "cd")
-//		cd(msh);
-	if(!ft_strncmp(msh->g_cmd->cmd[i], "export", ft_strlen("export")))
-		export(msh);
-
-//	if(!ft_strncmp(msh->string_name, "pwd", ft_strlen("pwd")))
-//		pwd();
-//	if(!ft_strncmp(msh->string_name, "echo", ft_strlen("echo")))
-//		run_echo(msh);
-//	if(!ft_strncmp(msh->string_name, "exit", ft_strlen("exit")))
-//		cmd_exit(msh);
-//	if(!ft_strncmp(msh->string_name, "env", ft_strlen("env")))
-//		run_env(msh);
-		i++;
+		if (is_pipes)
+			execve(check_cmd(msh, tmp->cmd[0]), tmp->cmd, msh->a_env);
+		else
+		{
+			int pid = fork();
+			if (pid == 0)
+				execve(check_cmd(msh, tmp->cmd[0]), tmp->cmd, msh->a_env);
+			else
+				wait(&pid);
+		}
 	}
-//	if(!ft_strncmp(msh->string_name, "unset", ft_strlen("unset")))
-//		unset(msh);
-//	else
-//		not_found(msh);
-	return;
 }
-//	if(ft_strncmp(argv[0], "cd"))
-//		cd();
-//	else if(argv[0] != NULL)
-//	{
-//		printf("err");
-//		exit(0);
-//	}
-//	else if(ft_strncmp(argv[0], "pwd"))
-//		pwd();
-//	else if(ft_strncmp(argv[0], "uncet"))
-//		uncet();
-//	else if(ft_strncmp(argv[0], "export"))
-//		export();
-//	else if(ft_strncmp(argv[0], "env"))
-//		env();
-//	else if(ft_strncmp(argv[0], "echo"))
-//		echo();
-//}
+
+int	all_command(t_msh *msh)
+{
+	int			i;
+	t_list		*tmp;
+
+	tmp = msh->g_cmd;
+	pipe_malloc(msh);
+	i = 0;
+	check(msh, tmp, i);
+	pipe_close(msh);
+	pipe_waitpid(msh);
+	return (1);
+}

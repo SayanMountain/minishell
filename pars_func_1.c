@@ -1,13 +1,50 @@
 #include "minishell.h"
 
-void	check_space(t_msh *msh, t_list *tmp, int *i)
+char	*join_str(t_msh *msh, char *str, int *i)
 {
-	while (tmp->str[*i] && tmp->str[*i] == ' ')
-		(*i)++;
-	msh->start = *i;
+	int k;
+	char	*str1;
+	char	*str2;
+	char	*str3;
+
+	k = *i;
+
+	skip_quotes(msh, str, i);
+	str1 = ft_substr(str, 0, k);
+	str2 = ft_substr(str, k + 1, *i - k - 1);
+	str3 = ft_strdup(str + *i + 1);
+	str1 = ft_strjoin(str1, str2);
+	str1 = ft_strjoin(str1, str3);
+	return (str1);
 }
 
-void	write_arr(t_msh *msh, t_list *tmp, int i)
+void	remove_quotes(t_msh *msh)
+{
+	int	j;
+	int i;
+	char	*str;
+	t_list	*tmp;
+
+	tmp = msh->g_cmd;
+	while (tmp)
+	{
+		j = 0;
+		while (tmp->cmd[j])
+		{
+			i = -1;
+			while (tmp->cmd[j][++i])
+				if (check_char(tmp->cmd[j][i], "\'\""))
+				{
+					str = join_str(msh, tmp->cmd[j], &i);
+					rewriting_str(tmp, str, j);
+				}
+			j++;
+		}
+		tmp = tmp->next;
+	}
+}
+
+void	write_arr(t_msh *msh, t_list *tmp, int *i)
 {
 	int		k;
 	char	**new_arr;
@@ -19,77 +56,54 @@ void	write_arr(t_msh *msh, t_list *tmp, int i)
 		return;
 	while (++k < msh->len_arr)
 		new_arr[k] = tmp->cmd[k];
-	new_str = ft_substr(tmp->str, msh->start, i - msh->start);
+	new_str = ft_substr(tmp->str, msh->start, (*i) - msh->start);
 	new_arr[msh->len_arr] = new_str;
 	new_arr[msh->len_arr + 1] = NULL;
-	free(tmp->cmd);
 	tmp->cmd = new_arr;
 	msh->len_arr++;
 }
 
-
-
-void	split_str_cmd(t_msh *msh)
+int 	split_str(t_msh *msh, t_list *tmp)
 {
 	int		i;
+
+	i = 0;
+	while (tmp->str[i])
+	{
+		check_space(msh, tmp->str, &i);
+		while (tmp->str[i] != '\0' && tmp->str[i] != ' ')
+		{
+			if (check_char(tmp->str[i], "\'\""))
+			{
+				skip_quotes(msh, tmp->str, &i);
+//				printf("%s\n", msh->val_baks);
+				return (1);
+			}
+			if (check_baks(msh, tmp->str, &i))
+				return (1);
+			i++;
+		}
+		write_arr(msh, tmp, &i);
+		check_space(msh, tmp->str, &i);
+	}
+	return (0);
+}
+
+int 	split_str_cmd(t_msh *msh)
+{
 	t_list	*tmp;
 
-	msh->g_cmd->cmd = NULL;
+	if (msh->g_cmd)
+		msh->g_cmd->cmd = NULL;
 	tmp = msh->g_cmd;
 	while (tmp)
 	{
-		i = 0;
 		msh->len_arr = 0;
 		msh->start = 0;
-		while (tmp->str[i])
-		{
-			check_space(msh, tmp, &i);
-			while (tmp->str[i] != '\0' && tmp->str[i] != ' ')
-			{
-				if (check_char(tmp->str[i], "\'\""))
-					skip_quotes(tmp->str, &i);
-				i++;
-			}
-			write_arr(msh, tmp, i);
-			check_space(msh, tmp, &i);
-		}
+		if (split_str(msh, tmp))
+			return (1);
 		tmp = tmp->next;
 	}
+	return (0);
 }
 
-//void	write_arr_2(t_msh *msh, char *str)
-//{
-//	int		k;
-//	char	**new_arr;
-//
-//	k = -1;
-//	new_arr = (char **)malloc(sizeof(char *) * (msh->len_arr + 2));
-//	if (!new_arr)
-//		return;
-//	while (++k < msh->len_arr)
-//		new_arr[k] = msh->g_cmd->cmd[k];
-//	new_arr[msh->len_arr] = str;
-//	new_arr[msh->len_arr + 1] = NULL;
-//	//	free(old_arr);
-//	msh->g_cmd->cmd = new_arr;
-//}
-
-//char	*remove_quotes(t_msh *msh, t_list *tmp, int *i)
-//{
-//	int j;
-//	char	*str1;
-//	char	*str2;
-//	char	*str3;
-//
-//	j = *i;
-//	hand_quotes(tmp->str, i);
-//	str1 = ft_substr(tmp->str, 0, j - 1);
-//	str2 = ft_substr(tmp->str, j + 1, *i - j - 1);
-//	j = *i;
-//	while (tmp->str[(*i) + 1] != ' ')
-//		(*i)++;
-//	str3 = ft_substr(tmp->str, j + 1, *i - j);
-//	str1 = ft_strjoin(str1, str2);
-//	str1 = ft_strjoin(str1, str3);
-//	return (str1);
-//}
